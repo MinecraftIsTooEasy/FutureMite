@@ -1,29 +1,35 @@
 {
-	"schemaVersion": 1,
-	"id": "future-mite",
-	"version": "${version}",
-	"depends": {
-		"fishmodloader": ">=3.2.1"
-	},
-	"environment": "*",
-	"name": "FutureMITE",
-	"description": "",
-	"authors": ["FlyBird","mgdcm","AndrePraca"],
-	"entrypoints": {
-		"preLaunch": [
-			"com.github.FlyBird.FutureMITE.EarlyRiser"
-		],
-		"main": ["com.github.FlyBird.FutureMITE.FutureMITEStart"]
-	},
-	"mixins": [
-		"FutureMITE.mixins.json"
-	],
-	"custom": {
-		"loom:injected_interfaces": {
-			"net/minecraft/RenderBlocks": [
-				"com/github/FlyBird/FutureMITE/api/IRenderBlock"
-			]
-		}
-	},
-	"accessWidener": "FutureMITE.accesswidener"
+  "schemaVersion": 1,
+  "id": "futuremite",
+  "version": "${version}",
+  "depends": {
+    "fishmodloader": ">=3.2.1"
+  },
+  "environment": "*",
+  "name": "FutureMITE",
+  "description": "",
+  "authors": [
+    "Fly6ird",
+    "mgdcm",
+    "AndrePraca"
+  ],
+  "entrypoints": {
+    "preLaunch": [
+      "com.github.fly6ird.futuremite.EarlyRiser"
+    ],
+    "main": [
+      "com.github.fly6ird.futuremite.FutureMITEStart"
+    ]
+  },
+  "mixins": [
+    "futuremite.mixins.json"
+  ],
+  "custom": {
+    "loom:injected_interfaces": {
+      "net/minecraft/RenderBlocks": [
+        "com/github/fly6ird/futuremite/api/IRenderBlock"
+      ]
+    }
+  },
+  "accessWidener": "futuremite.accesswidener"
 }
