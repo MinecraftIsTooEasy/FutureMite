@@ -12,7 +12,7 @@ import net.minecraft.*;
 
 import java.util.List;
 
-public class CampfireHUDHandlerMITE implements IWailaDataProvider {
+public class CampfireHUDHandler implements IWailaDataProvider {
 
     @Override
     public ItemStack getWailaStack(IWailaDataAccessor accessor, IWailaConfigHandler config) {
@@ -31,7 +31,13 @@ public class CampfireHUDHandlerMITE implements IWailaDataProvider {
             TileEntity tileEntity = accessor.getTileEntity();
             if (tileEntity instanceof TileEntityCampfire) {
                 int burntime = ((TileEntityCampfire) tileEntity).getBurnTime();
-                currenttip.add(EnumChatFormatting.RESET + StatCollector.translateToLocal("campfire.burntime") + ":" + burntime);
+
+                int totalSeconds = Math.max(0, (int) Math.round(burntime / 20.0));
+                int minutes = totalSeconds / 60;
+                int seconds = totalSeconds % 60;
+                String timeStr = minutes + ":" + (seconds < 10 ? "0" + seconds : String.valueOf(seconds));
+
+                currenttip.add(EnumChatFormatting.RESET + StatCollector.translateToLocal("campfire.burntime") + ": " + timeStr);
             }
         }
         return currenttip;
@@ -52,7 +58,7 @@ public class CampfireHUDHandlerMITE implements IWailaDataProvider {
     }
 
     public static void callbackRegister(IWailaRegistrar registrar) {
-        IWailaDataProvider instance = new CampfireHUDHandlerMITE();
+        IWailaDataProvider instance = new CampfireHUDHandler();
         registrar.registerBodyProvider(instance, BlockCampfire.class);
         //registrar.registerBodyProvider(instance, BlockExtinguishedCampfire.class);
     }
