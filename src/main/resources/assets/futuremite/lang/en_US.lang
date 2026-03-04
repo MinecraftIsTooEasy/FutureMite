@@ -218,3 +218,5 @@ tile.dark_oak_sapling.name=Dark Oak Sapling
 tile.extinguished_Campfire.name=Extinguished Campfire
 
 campfire.burntime=Burn Time
+campfire.food.cooked=Cooked
+campfire.food.empty=(No food)

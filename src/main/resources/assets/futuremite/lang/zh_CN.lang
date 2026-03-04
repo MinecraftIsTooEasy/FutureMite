@@ -218,3 +218,5 @@ tile.dark_oak_sapling.name=深色橡木树苗
 tile.extinguished_Campfire.name=熄灭的营火
 
 campfire.burntime=燃烧时间
+campfire.food.cooked=已烤熟
+campfire.food.empty=(无食材)

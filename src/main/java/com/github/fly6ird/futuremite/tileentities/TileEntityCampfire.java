@@ -114,6 +114,10 @@ public class TileEntityCampfire extends TileEntity {
         return burnItemStacks;
     }
 
+    public int[] getBurnFoodTime() {
+        return burnFoodTime;
+    }
+
     public ItemStack getCookFood(ItemStack food)
     {
         if (food != null && food.getItem() instanceof ItemMeat && !((ItemMeat) food.getItem()).is_cooked)
