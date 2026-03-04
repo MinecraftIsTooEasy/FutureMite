@@ -19,6 +19,9 @@
     ],
     "main": [
       "com.github.fly6ird.futuremite.FutureMITEStart"
+    ],
+    "carryon": [
+      "com.github.fly6ird.futuremite.compat.FutureMITECarryOnPlugin"
     ]
   },
   "mixins": [
