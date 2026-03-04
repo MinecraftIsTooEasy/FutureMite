@@ -31,10 +31,16 @@ dependencies {
     implementation "com.github.MinecraftIsTooEasy:ManyLib:2.3.0"
     implementation "com.github.MinecraftIsTooEasy:ModMenu:10.1.1"
     implementation "com.github.MinecraftIsTooEasy:RustedIronCore:1.5.0"
+    implementation "com.github.MinecraftIsTooEasy:RustedIronCore:1.5.0:sources"
 
     implementation "com.github.MinecraftIsTooEasy:OMMC:1.4.2"
     implementation "com.github.MinecraftIsTooEasy:Waila:2.0.4"
     implementation "com.github.MinecraftIsTooEasy:ExtraGui:1.3.6"
+    implementation "com.github.MinecraftIsTooEasy:BetterTips:1.4.0"
+    implementation "com.github.MinecraftIsTooEasy:PinIn-Lib:1.6.0"
+    implementation "com.github.MinecraftIsTooEasy:CarryOn:1.0.0"
+    implementation "com.github.MinecraftIsTooEasy:MithrilCore:1.0.9"
+    implementation "com.github.MinecraftIsTooEasy:Neodymium:1.1.1"
 
     implementation "com.github.MinecraftIsTooEasy:Gson:2.10.1"
     implementation "com.github.MinecraftIsTooEasy:FastUtil:8.5.12"
@@ -48,7 +54,7 @@ loom {
     mergedMinecraftJar()
 
     mods {
-        "Baubles" {
+        "FutureMITE" {
             sourceSet sourceSets.main
         }
     }

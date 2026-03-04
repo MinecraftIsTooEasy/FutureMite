@@ -28,8 +28,8 @@ tile.stonecutter.name=切石机
 
 item.rabbitRaw.name=生兔肉
 item.rabbitCooked.name=熟兔肉
-item.rabbitFoot.name=兔脚
-item.rabbitHide.name=兔皮
+item.rabbitFoot.name=兔子脚
+item.rabbitHide.name=兔子皮
 item.rabbit_stew.name=兔肉煲
 
 entity.Rabbit.name=兔子
