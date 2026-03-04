@@ -18,7 +18,9 @@ public class BlockCampfire extends BlockContainer {
     private Icon campFire_FireIcon;
     private Icon campFire_LogLitIcon;
     private boolean isActive;
-    private static boolean keepCampfireData;
+
+    private static boolean keepCampfireDataServer = false;
+
     public static final DamageSource CAMPFIRE_DAMAGE = (new DamageSourceExtend("CampFire"));
 
     private final float damage;
@@ -143,18 +145,18 @@ public class BlockCampfire extends BlockContainer {
 
     public void breakBlock(World world, int x, int y, int z, int blockid, int metadata)
     {
-        if (!keepCampfireData)
+        if (keepCampfireDataServer)
         {
-            if (!world.isRemote)
-            {
-                TileEntity tile = world.getBlockTileEntity(x, y, z);
-
-                if (tile instanceof TileEntityCampfire)
-                    ((TileEntityCampfire) tile).popItems();
-            }
-
-            super.breakBlock(world, x, y, z, blockid, metadata);
+            return;
         }
+        if (!world.isRemote)
+        {
+            TileEntity tile = world.getBlockTileEntity(x, y, z);
+            if (tile instanceof TileEntityCampfire)
+                ((TileEntityCampfire) tile).popItems();
+        }
+
+        super.breakBlock(world, x, y, z, blockid, metadata);
     }
 
     @Override
@@ -199,27 +201,18 @@ public class BlockCampfire extends BlockContainer {
 
     public static void updateCampfireBlockState(boolean isBurned, World par1World, int x, int y, int z)
     {
+        if (par1World.isRemote) return;
+
         int meta = par1World.getBlockMetadata(x, y, z);
 
-        TileEntity tileEntity = par1World.getBlockTileEntity(x, y, z);
+        keepCampfireDataServer = true;
 
-        keepCampfireData = true;
         if (isBurned)
-        {
             par1World.setBlock(x, y, z, Blocks.campfire.blockID, meta, 3);
-        }
         else
-        {
             par1World.setBlock(x, y, z, Blocks.extinguishedCampfire.blockID, meta, 3);
-        }
 
-        keepCampfireData = false;
-
-        if (tileEntity != null)
-        {
-            tileEntity.validate();
-            par1World.setBlockTileEntity(x, y, z, tileEntity);
-        }
+        keepCampfireDataServer = false;
     }
 
     @Override

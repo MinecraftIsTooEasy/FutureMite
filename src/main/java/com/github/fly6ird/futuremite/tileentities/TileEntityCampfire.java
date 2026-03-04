@@ -1,6 +1,7 @@
 package com.github.fly6ird.futuremite.tileentities;
 
 import com.github.fly6ird.futuremite.blocks.BlockCampfire;
+
 import net.minecraft.*;
 
 import java.util.Random;
@@ -9,7 +10,6 @@ import static com.github.fly6ird.futuremite.blocks.BlockCampfire.updateCampfireB
 
 public class TileEntityCampfire extends TileEntity {
 
-    // 每 tick -1，6000 tick = 5分钟（默认值），12000 tick = 10分钟（上限）
     public static final int DEFAULT_BURN_TIME = 6000;
     public static final int MAX_BURN_TIME     = 12000;
 
@@ -29,16 +29,20 @@ public class TileEntityCampfire extends TileEntity {
     public void updateEntity()
     {
         Block currentBlock = this.worldObj.getBlock(this.xCoord, this.yCoord, this.zCoord);
-
         if (!(currentBlock instanceof BlockCampfire)) return;
 
         boolean isActive = ((BlockCampfire) currentBlock).getIsActive();
-
         if (!isActive) return;
+
+        if (this.worldObj.isRemote)
+        {
+            return;
+        }
 
         if (this.burnTime > 0)
         {
             --this.burnTime;
+            boolean changed = false;
 
             for (int i = 0; i < burnItemStacks.length; i++)
             {
@@ -51,21 +55,26 @@ public class TileEntityCampfire extends TileEntity {
                 else if (!isCookedItemStack(burnItemStacks[i]))
                 {
                     burnItemStacks[i] = getCookFood(burnItemStacks[i]);
-                    burnFoodTime[i] = 60; // 熟了显示 3s
+                    burnFoodTime[i] = 60;
+                    changed = true;
                 }
                 else
                 {
                     popItem(burnItemStacks[i], this.worldObj, this.xCoord, this.yCoord, this.zCoord);
                     burnItemStacks[i] = null;
+                    burnFoodTime[i] = 0;
+                    changed = true;
                 }
+            }
+
+            if (changed || this.burnTime % 20 == 0)
+            {
+                this.worldObj.markBlockForUpdate(this.xCoord, this.yCoord, this.zCoord);
             }
         }
         else
         {
-            // 燃料耗尽，自动熄灭
-            if (!this.worldObj.isRemote) {
-                updateCampfireBlockState(false, this.worldObj, this.xCoord, this.yCoord, this.zCoord);
-            }
+            updateCampfireBlockState(false, this.worldObj, this.xCoord, this.yCoord, this.zCoord);
         }
     }
 
@@ -224,8 +233,7 @@ public class TileEntityCampfire extends TileEntity {
                 this.burnFoodTime[index]   = entry.getInteger("BurnFoodTime");
             }
         }
-        if (tag.hasKey("BurnTime")) {
-            this.burnTime = tag.getInteger("BurnTime");
-        }
+        // 直接读，不需要 hasKey 判断，默认值 DEFAULT_BURN_TIME 本来就是正确的初始值
+        this.burnTime = tag.getInteger("BurnTime");
     }
 }
