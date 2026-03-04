@@ -1,5 +1,7 @@
 package com.github.fly6ird.futuremite.blocks;
 
+import com.github.fly6ird.futuremite.creativetab.FutureMITECreativeTabs;
+
 import net.minecraft.*;
 
 public class BlockModLog extends BlockRotatedPillar {
@@ -12,7 +14,7 @@ public class BlockModLog extends BlockRotatedPillar {
         setHardness(0.9F);
         setMaxStackSize(4);
         setStepSound(Blocks.stepSoundWood);
-        setCreativeTab(CreativeTabs.tabBlock);
+        this.setCreativeTab(FutureMITECreativeTabs.tabBlock);
     }
 
     protected BlockModLog(int par1, String id) {
@@ -21,7 +23,7 @@ public class BlockModLog extends BlockRotatedPillar {
         setHardness(0.9F);
         setMaxStackSize(4);
         setStepSound(Blocks.stepSoundWood);
-        setCreativeTab(CreativeTabs.tabBlock);
+        this.setCreativeTab(FutureMITECreativeTabs.tabBlock);
         this.setTextureName(id);
         this.setUnlocalizedName("log." + id);
     }

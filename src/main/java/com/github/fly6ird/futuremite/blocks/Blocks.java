@@ -1,6 +1,7 @@
 package com.github.fly6ird.futuremite.blocks;
 
 import com.github.fly6ird.futuremite.FutureMITEStart;
+import com.github.fly6ird.futuremite.creativetab.FutureMITECreativeTabs;
 import com.github.fly6ird.futuremite.items.ItemBigGrass;
 import com.github.fly6ird.futuremite.items.Items;
 import com.github.fly6ird.futuremite.sound.*;
@@ -157,7 +158,7 @@ public class Blocks extends Block {
         registryEvent.registerItemBlock(FutureMITEStart.NameSpaceCompact, "silver_lantern", silverLantern);
         registryEvent.registerItemBlock(FutureMITEStart.NameSpaceCompact, "mithril_lantern", mithrilLantern);
 
-        registryEvent.registerItemBlock(FutureMITEStart.NameSpaceCompact, "futuremite:end_stone_bricks", endStoneBrick);
+        registryEvent.registerItemBlock(FutureMITEStart.NameSpaceCompact, "futuremite:end_stone_bricks", endStoneBrick.setCreativeTab(FutureMITECreativeTabs.tabBlock));
         registryEvent.registerItemBlock(FutureMITEStart.NameSpaceCompact, "stonebrick", stoneBrickWall);
         registryEvent.registerItemBlock(FutureMITEStart.NameSpaceCompact, "brick", BrickWall);
         registryEvent.registerItemBlock(FutureMITEStart.NameSpaceCompact, "futuremite:end_stone_bricks", endStoneBrickWall);

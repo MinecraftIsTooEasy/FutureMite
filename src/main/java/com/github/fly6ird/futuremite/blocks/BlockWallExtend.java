@@ -1,5 +1,7 @@
 package com.github.fly6ird.futuremite.blocks;
 
+import com.github.fly6ird.futuremite.creativetab.FutureMITECreativeTabs;
+
 import net.minecraft.Block;
 import net.minecraft.BlockWall;
 import net.minecraft.Icon;
@@ -10,6 +12,7 @@ public class BlockWallExtend extends BlockWall {
     public BlockWallExtend(int par1, Block par2Block) {
         super(par1, par2Block);
         block = par2Block;
+        this.setCreativeTab(FutureMITECreativeTabs.tabBlock);
     }
 
     public Icon getIcon(int par1, int par2) {//par1 有点像方块id  par2像meta

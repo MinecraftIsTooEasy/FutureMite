@@ -1,4 +1,6 @@
 #Language Generator
+itemGroup.FutureMITE_Item=未来MITE-物品
+itemGroup.FutureMITE_Block=未来MITE-方块
 
 tile.barrel.name=木桶
 container.barrel=木桶
@@ -38,7 +40,6 @@ entity.ArmorStand.name=盔甲架
 entity.NewBoat.name=船
 entity.NewBoatWithChest.name=运输船
 item.wooden_armorstand.name=盔甲架
-entity.ArmorStand.name=盔甲架
 
 tile.stonebrickWall.name=石砖墙
 tile.brickWall.name=石砖墙
@@ -125,7 +126,6 @@ item.dark_oak_boat.name=深色橡木船
 item.dark_oak_chest_boat.name=深色橡木运输船
 item.cherry_boat.name=樱花木船
 item.cherry_chest_boat.name=樱花木运输船
-
 
 tile.fences.oak.name=橡木栅栏
 tile.fence_gates.oak.name=橡木栅栏门

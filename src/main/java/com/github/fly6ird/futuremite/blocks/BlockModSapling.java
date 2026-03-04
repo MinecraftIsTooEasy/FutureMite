@@ -1,5 +1,6 @@
 package com.github.fly6ird.futuremite.blocks;
 
+import com.github.fly6ird.futuremite.creativetab.FutureMITECreativeTabs;
 
 import net.minecraft.*;
 
@@ -16,7 +17,7 @@ public class BlockModSapling extends BlockPlant {
         float var2 = 0.4F;
         this.setBlockBoundsForAllThreads(0.5F - var2, 0.0D, 0.5F - var2, 0.5F + var2, var2 * 2.0F, 0.5F + var2);
         this.setMaxStackSize(16);
-        this.setCreativeTab(CreativeTabs.tabDecorations);
+        this.setCreativeTab(FutureMITECreativeTabs.tabBlock);
         this.setCushioning(0.2F);
         this.treeHelper = treeHelper;
         this.setStepSound(soundGrassFootstep);

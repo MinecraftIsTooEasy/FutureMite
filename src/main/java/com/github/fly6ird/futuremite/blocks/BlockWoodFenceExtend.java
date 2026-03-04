@@ -1,5 +1,7 @@
 package com.github.fly6ird.futuremite.blocks;
 
+import com.github.fly6ird.futuremite.creativetab.FutureMITECreativeTabs;
+
 import net.minecraft.*;
 import net.xiaoyu233.fml.reload.event.RecipeRegistryEvent;
 
@@ -10,6 +12,7 @@ public class BlockWoodFenceExtend extends BlockFence {
         super(par1, "planks_" + Block.planks.getTextures()[type], Material.wood);
         this.type = type;
         this.setHardness(0.4F).setResistance(1.0F).setStepSound(soundWoodFootstep).setUnlocalizedName("fences." + Block.planks.getNames()[type]);
+        this.setCreativeTab(FutureMITECreativeTabs.tabBlock);
     }
 
     public void registerRecipe(RecipeRegistryEvent register) {

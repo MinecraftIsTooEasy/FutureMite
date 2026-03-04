@@ -1,4 +1,6 @@
 #Language Generator
+itemGroup.FutureMITE_Item=FutureMITE Items
+itemGroup.FutureMITE_Block=FutureMITE Blocks
 
 tile.barrel.name=Barrel
 container.barrel=Barrel
@@ -38,7 +40,6 @@ entity.ArmorStand.name=Armor Stand
 entity.NewBoat.name=Boat
 entity.NewBoatWithChest.name=Chest Boat
 item.wooden_armorstand.name=Armor Stand
-entity.ArmorStand.name=Armor Stand
 
 tile.stonebrickWall.name=Stone Brick Wall
 tile.brickWall.name=Brick Wall
@@ -211,7 +212,9 @@ tile.trapdoors.dark_oak.name=Dark Oak Trapdoor
 leaves.acacia.name=Acacia Leaves
 leaves.dark_oak.name=Dark Oak Leaves
 leaves.cherry.name=Cherry Leaves
+
 item.woodChips.name=Wood Chips
 tile.dark_oak_sapling.name=Dark Oak Sapling
 tile.extinguished_Campfire.name=Extinguished Campfire
+
 campfire.burntime=Burn Time

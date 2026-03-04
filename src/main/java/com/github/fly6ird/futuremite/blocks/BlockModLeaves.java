@@ -1,9 +1,6 @@
-//
-// Source code recreated from a .class file by IntelliJ IDEA
-// (powered by FernFlower decompiler)
-//
-
 package com.github.fly6ird.futuremite.blocks;
+
+import com.github.fly6ird.futuremite.creativetab.FutureMITECreativeTabs;
 
 import net.minecraft.*;
 
@@ -21,7 +18,7 @@ public class BlockModLeaves extends BlockLeavesBase {
         this.id = id;
         this.setTickRandomly(true);
         this.setStepSound(soundGrassFootstep);
-        this.setCreativeTab(CreativeTabs.tabDecorations);
+        this.setCreativeTab(FutureMITECreativeTabs.tabBlock);
         this.setUnlocalizedName(id);
         this.setCushioning(0.8F);
         this.treeHelper = treeHelper;

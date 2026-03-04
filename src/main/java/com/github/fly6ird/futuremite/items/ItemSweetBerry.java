@@ -1,5 +1,6 @@
 package com.github.fly6ird.futuremite.items;
 
+import com.github.fly6ird.futuremite.creativetab.FutureMITECreativeTabs;
 import net.minecraft.*;
 
 public class ItemSweetBerry extends ItemFood {
@@ -10,6 +11,7 @@ public class ItemSweetBerry extends ItemFood {
         this.cropId = crop_block_id;
         this.setPlantProduct();
         this.setFoodValue(satiation, nutrition, 1000, has_protein, false, has_phytonutrients);
+        this.setCreativeTab(FutureMITECreativeTabs.tabItem);
     }
 
     private boolean isSoilBlock(int blockID) {

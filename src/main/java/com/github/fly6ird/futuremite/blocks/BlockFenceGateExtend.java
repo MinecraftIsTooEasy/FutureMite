@@ -1,6 +1,9 @@
 package com.github.fly6ird.futuremite.blocks;
 
+import com.github.fly6ird.futuremite.creativetab.FutureMITECreativeTabs;
+
 import net.minecraft.*;
+
 import net.xiaoyu233.fml.reload.event.RecipeRegistryEvent;
 
 public class BlockFenceGateExtend extends BlockFenceGate {
@@ -10,6 +13,7 @@ public class BlockFenceGateExtend extends BlockFenceGate {
         super(par1);
         this.type = type;
         this.setHardness(2.0F).setResistance(5.0F).setStepSound(soundWoodFootstep).setUnlocalizedName("fence_gates." + Block.planks.getNames()[type]);
+        this.setCreativeTab(FutureMITECreativeTabs.tabBlock);
     }
 
     @Override

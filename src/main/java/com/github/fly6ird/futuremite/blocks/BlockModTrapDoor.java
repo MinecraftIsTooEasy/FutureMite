@@ -1,8 +1,11 @@
 package com.github.fly6ird.futuremite.blocks;
 
+import com.github.fly6ird.futuremite.creativetab.FutureMITECreativeTabs;
+
 import net.minecraft.BlockTrapDoor;
 import net.minecraft.ItemStack;
 import net.minecraft.Material;
+
 import net.xiaoyu233.fml.reload.event.RecipeRegistryEvent;
 
 public class BlockModTrapDoor extends BlockTrapDoor {
@@ -17,6 +20,7 @@ public class BlockModTrapDoor extends BlockTrapDoor {
         this.Planks = planks;
         this.setUnlocalizedName("trapdoors." + id);
         this.setTextureName("futuremite:trapdoors/" + id);
+        this.setCreativeTab(FutureMITECreativeTabs.tabBlock);
     }
 
     public void registerRecipeWithVanilla(RecipeRegistryEvent register, int i) {

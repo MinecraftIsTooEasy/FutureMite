@@ -1,5 +1,7 @@
 package com.github.fly6ird.futuremite.blocks;
 
+import com.github.fly6ird.futuremite.creativetab.FutureMITECreativeTabs;
+
 import net.minecraft.*;
 
 import static net.minecraft.BlockGrass.getTramplingEffect;
@@ -14,6 +16,7 @@ public class BlockBigGrass extends BlockPlant {
         super(id, Material.vine);
         float size = 0.4F;
         this.setUnlocalizedName(name);
+        this.setCreativeTab(FutureMITECreativeTabs.tabBlock);
         this.setBlockBoundsForAllThreads(0.5F - size, 0.0, 0.5F - size, 0.5F + size, 0.800000011920929, 0.5F + size);
     }
 

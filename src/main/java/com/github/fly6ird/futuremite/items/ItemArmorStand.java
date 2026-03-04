@@ -1,8 +1,10 @@
 package com.github.fly6ird.futuremite.items;
 
+import com.github.fly6ird.futuremite.creativetab.FutureMITECreativeTabs;
 import com.github.fly6ird.futuremite.entities.EntityArmorStand;
 import com.github.fly6ird.futuremite.entities.Rotations;
 import com.github.fly6ird.futuremite.misc.NBTTagCompoundExtend;
+
 import net.minecraft.*;
 
 import java.util.Iterator;
@@ -16,7 +18,7 @@ public class ItemArmorStand extends Item {
         setMaxStackSize(16);
         //setTextureName("wooden_armorstand");
         setUnlocalizedName("wooden_armorstand");
-        setCreativeTab(CreativeTabs.tabDecorations);
+        this.setCreativeTab(FutureMITECreativeTabs.tabBlock);
     }
 
     @Override

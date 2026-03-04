@@ -1,5 +1,7 @@
 package com.github.fly6ird.futuremite.blocks;
 
+import com.github.fly6ird.futuremite.creativetab.FutureMITECreativeTabs;
+
 import net.minecraft.*;
 
 public class PrismarineBlocks extends Block implements IBlockWithSubtypes {
@@ -13,7 +15,7 @@ public class PrismarineBlocks extends Block implements IBlockWithSubtypes {
         setHardness(1.5F);
         setResistance(10.0F);
         setUnlocalizedName("prismarine_block");
-        setCreativeTab(CreativeTabs.tabDecorations);
+        this.setCreativeTab(FutureMITECreativeTabs.tabBlock);
     }
 
     public boolean connectsWithFence() {

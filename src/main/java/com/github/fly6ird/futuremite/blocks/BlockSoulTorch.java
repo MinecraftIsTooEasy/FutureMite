@@ -1,7 +1,8 @@
 package com.github.fly6ird.futuremite.blocks;
 
-
+import com.github.fly6ird.futuremite.creativetab.FutureMITECreativeTabs;
 import com.github.fly6ird.futuremite.misc.EnumParticles;
+
 import net.minecraft.*;
 
 import java.util.Random;
@@ -16,6 +17,7 @@ public class BlockSoulTorch extends BlockTorch {
         super(BlockID);
         this.setLightValue(0.625f);
         this.setStepSound(stepSoundWood);
+        this.setCreativeTab(FutureMITECreativeTabs.tabBlock);
     }
 
     @Override

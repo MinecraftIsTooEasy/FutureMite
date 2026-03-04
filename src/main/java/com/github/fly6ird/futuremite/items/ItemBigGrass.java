@@ -1,5 +1,7 @@
 package com.github.fly6ird.futuremite.items;
 
+import com.github.fly6ird.futuremite.creativetab.FutureMITECreativeTabs;
+
 import net.minecraft.Block;
 import net.minecraft.Icon;
 import net.minecraft.ItemColored;
@@ -9,6 +11,7 @@ public class ItemBigGrass extends ItemColored {
 
     public ItemBigGrass(Block block) {
         super(block);
+        this.setCreativeTab(FutureMITECreativeTabs.tabBlock);
     }
 
     public Icon getIconFromSubtype(int par1) {

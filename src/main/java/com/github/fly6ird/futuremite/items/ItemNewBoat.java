@@ -1,11 +1,14 @@
 package com.github.fly6ird.futuremite.items;
 
 
+import com.github.fly6ird.futuremite.creativetab.FutureMITECreativeTabs;
 import com.github.fly6ird.futuremite.entities.EntityNewBoat;
 import com.github.fly6ird.futuremite.entities.EntityNewBoatWithChest;
-import com.google.common.collect.Maps;
+
 import net.minecraft.*;
 import net.xiaoyu233.fml.reload.event.RecipeRegistryEvent;
+
+import com.google.common.collect.Maps;
 
 import java.util.List;
 import java.util.Map;
@@ -34,7 +37,7 @@ public class ItemNewBoat extends Item {
                 new BoatInfo(new ItemStack(this), () -> Item.getItem(Block.planks), type.ordinal(), false));
         boatinfo = new BoatInfo(new ItemStack(this), () -> Item.getItem(Block.planks), type.ordinal(), false);
         setMaxStackSize(1);
-        setCreativeTab(CreativeTabs.tabTransport);
+        this.setCreativeTab(FutureMITECreativeTabs.tabBlock);
     }
 
     public void registerBoatRecipes(RecipeRegistryEvent register) {

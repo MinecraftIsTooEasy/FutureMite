@@ -1,11 +1,14 @@
 package com.github.fly6ird.futuremite.items;
 
 import com.github.fly6ird.futuremite.blocks.BlockModLeaves;
+import com.github.fly6ird.futuremite.creativetab.FutureMITECreativeTabs;
+
 import net.minecraft.*;
 
 public class ItemModLeaves extends ItemBlock {
     public ItemModLeaves(Block block) {
         super(block);
+        this.setCreativeTab(FutureMITECreativeTabs.tabBlock);
     }
 
     public int getMetadata(int par1) {

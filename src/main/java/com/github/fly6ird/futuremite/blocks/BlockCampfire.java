@@ -1,10 +1,11 @@
 package com.github.fly6ird.futuremite.blocks;
 
-
+import com.github.fly6ird.futuremite.creativetab.FutureMITECreativeTabs;
 import com.github.fly6ird.futuremite.misc.DamageSourceExtend;
 import com.github.fly6ird.futuremite.misc.EnumParticles;
 import com.github.fly6ird.futuremite.render.RenderTypes;
 import com.github.fly6ird.futuremite.tileentities.TileEntityCampfire;
+
 import net.minecraft.*;
 
 import java.util.Objects;
@@ -29,7 +30,7 @@ public class BlockCampfire extends BlockContainer {
         this.setStepSound(soundWoodFootstep);
         this.damage = damage;
         this.isActive = isActive;
-        setCreativeTab(CreativeTabs.tabDecorations);
+        this.setCreativeTab(FutureMITECreativeTabs.tabBlock);
     }
 
     public boolean getIsActive() {

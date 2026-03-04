@@ -1,7 +1,8 @@
 package com.github.fly6ird.futuremite.blocks;
 
-
+import com.github.fly6ird.futuremite.creativetab.FutureMITECreativeTabs;
 import com.github.fly6ird.futuremite.render.RenderTypes;
+
 import net.minecraft.*;
 
 import static com.github.fly6ird.futuremite.blocks.Blocks.stepSoundChain;
@@ -14,7 +15,7 @@ public class BlockChain extends Block {
         this.setMaxStackSize(16);
         this.setHardness(0.9f);//小于1 可以用手  大于1需要工具 默认斧头
         this.setStepSound(stepSoundChain);
-        setCreativeTab(CreativeTabs.tabDecorations);
+        this.setCreativeTab(FutureMITECreativeTabs.tabBlock);
     }
 
     @Override

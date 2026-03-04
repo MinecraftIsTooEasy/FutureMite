@@ -1,5 +1,7 @@
 package com.github.fly6ird.futuremite.blocks;
 
+import com.github.fly6ird.futuremite.creativetab.FutureMITECreativeTabs;
+
 import net.minecraft.BlockWood;
 import net.minecraft.Icon;
 import net.minecraft.IconRegister;
@@ -13,6 +15,7 @@ public class BlockModWoodPlanks extends BlockWood {
         this.setResistance(5.0F);
         this.setStepSound(soundWoodFootstep);
         this.setUnlocalizedName("planks");
+        this.setCreativeTab(FutureMITECreativeTabs.tabBlock);
     }
 
     protected Icon icon;

@@ -1,7 +1,9 @@
 package com.github.fly6ird.futuremite.blocks;
 
+import com.github.fly6ird.futuremite.creativetab.FutureMITECreativeTabs;
 import com.github.fly6ird.futuremite.items.Items;
 import com.github.fly6ird.futuremite.misc.DamageSourceExtend;
+
 import net.minecraft.*;
 
 import java.util.Random;
@@ -17,6 +19,7 @@ public class BlockSweetBerry extends BlockGrowingPlant {
         //this.setBlockBounds(0.25, 0.0, 0.25, 0.75, 0.4375, 0.75,false);
         this.setStepSound(stepSoundSweetBerryBush);
         this.setUnlocalizedName("sweetBerryBush");
+        this.setCreativeTab(FutureMITECreativeTabs.tabBlock);
     }
 
     private final Icon[] sweetBerry_Icon = new Icon[8];

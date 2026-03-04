@@ -1,10 +1,11 @@
 package com.github.fly6ird.futuremite.blocks;
 
+import com.github.fly6ird.futuremite.creativetab.FutureMITECreativeTabs;
 import com.github.fly6ird.futuremite.render.RenderTypes;
+
 import net.minecraft.*;
 
 import static com.github.fly6ird.futuremite.blocks.Blocks.stepSoundLantern;
-
 
 public class BlockLantern extends Block {
     Icon blocklantern;
@@ -17,7 +18,7 @@ public class BlockLantern extends Block {
         this.setMaxStackSize(1);
         this.setBlockBoundsForAllThreads(0.3125, 0.0, 0.3125, 0.6878, 1.0, 0.6878);
         this.setStepSound(stepSoundLantern);
-        setCreativeTab(CreativeTabs.tabDecorations);
+        this.setCreativeTab(FutureMITECreativeTabs.tabBlock);
     }
 
     //metadata=0 没锁链   等于1  有锁链

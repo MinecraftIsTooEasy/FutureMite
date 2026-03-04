@@ -1,5 +1,7 @@
 package com.github.fly6ird.futuremite.blocks;
 
+import com.github.fly6ird.futuremite.creativetab.FutureMITECreativeTabs;
+
 import net.minecraft.Block;
 import net.minecraft.BlockSlab;
 import net.minecraft.Icon;
@@ -16,6 +18,7 @@ public class BlockModWoodSlab extends BlockSlab {
         modelBlock = block;
         modelBlockMetadata = metadata;
         this.name = name;
+        this.setCreativeTab(FutureMITECreativeTabs.tabBlock);
     }
 
     public float getBlockHardness(int metadata) {

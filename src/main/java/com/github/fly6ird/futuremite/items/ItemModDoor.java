@@ -1,11 +1,13 @@
 package com.github.fly6ird.futuremite.items;
 
-
 import com.github.fly6ird.futuremite.blocks.BlockModWoodPlanks;
+
+import com.github.fly6ird.futuremite.creativetab.FutureMITECreativeTabs;
 import net.minecraft.Block;
 import net.minecraft.ItemDoor;
 import net.minecraft.ItemStack;
 import net.minecraft.Material;
+
 import net.xiaoyu233.fml.reload.event.RecipeRegistryEvent;
 
 public class ItemModDoor extends ItemDoor {
@@ -16,6 +18,7 @@ public class ItemModDoor extends ItemDoor {
         this(par1, doorBlock, (BlockModWoodPlanks) null);
         this.setTextureName("futuremite:doors/" + id);
         this.setUnlocalizedName("doors." + id);
+        this.setCreativeTab(FutureMITECreativeTabs.tabBlock);
     }
 
     public ItemModDoor(int par1, Block doorBlock, BlockModWoodPlanks planks) {
@@ -25,6 +28,7 @@ public class ItemModDoor extends ItemDoor {
         if (Planks != null) {
             this.setTextureName("futuremite:doors/" + Planks.id);
             this.setUnlocalizedName("doors." + Planks.id);
+            this.setCreativeTab(FutureMITECreativeTabs.tabBlock);
         }
     }
 

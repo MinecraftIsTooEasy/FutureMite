@@ -1,6 +1,8 @@
 package com.github.fly6ird.futuremite.blocks;
 
+import com.github.fly6ird.futuremite.creativetab.FutureMITECreativeTabs;
 import com.github.fly6ird.futuremite.tileentities.TileEntityBarrel;
+
 import net.minecraft.*;
 
 import java.util.Random;
@@ -19,7 +21,7 @@ public class BlockBarrel extends BlockDirectionalWithTileEntity {
         super(par1, par2, new BlockConstants());
         this.setMaxStackSize(1);
         this.setHardness(BlockHardness.workbench);
-        this.setCreativeTab(CreativeTabs.tabDecorations);
+        this.setCreativeTab(FutureMITECreativeTabs.tabBlock);
         this.setStepSound(stepSoundWood);
         this.setUnlocalizedName(name);
         setTickRandomly(true);

@@ -2,6 +2,7 @@ package com.github.fly6ird.futuremite.items;
 
 import com.github.fly6ird.futuremite.FutureMITEStart;
 import com.github.fly6ird.futuremite.blocks.Blocks;
+import com.github.fly6ird.futuremite.creativetab.FutureMITECreativeTabs;
 import com.github.fly6ird.futuremite.entities.EntityNewBoat;
 import com.github.fly6ird.futuremite.items.register.RecipesFurnaceExtend;
 import net.minecraft.*;
@@ -32,21 +33,21 @@ public class Items extends Item {
     public static final ItemModDoor jungleDoor = new ItemModDoor(getNextItemID(), Blocks.jungleDoor, "jungle");
     public static final ItemModDoor spruceDoor = new ItemModDoor(getNextItemID(), Blocks.spruceDoor, "spruce");
 
-    public static final ItemMeat rabbitRaw = (ItemMeat) (new ItemMeat(getNextItemID(), 3, 3, false, false, "futuremite:rabbit_raw")).setUnlocalizedName("rabbitRaw");
-    public static final ItemMeat rabbitCooked = (ItemMeat) (new ItemMeat(getNextItemID(), 6, 6, false, false, "futuremite:rabbit_cooked")).setUnlocalizedName("rabbitCooked");
+    public static final ItemMeat rabbitRaw = (ItemMeat) (new ItemMeat(getNextItemID(), 3, 3, false, false, "futuremite:rabbit_raw")).setUnlocalizedName("rabbitRaw").setCreativeTab(FutureMITECreativeTabs.tabItem);
+    public static final ItemMeat rabbitCooked = (ItemMeat) (new ItemMeat(getNextItemID(), 6, 6, false, false, "futuremite:rabbit_cooked")).setUnlocalizedName("rabbitCooked").setCreativeTab(FutureMITECreativeTabs.tabItem);
 
-    public static final Item rabbitHide = (new Items(getNextItemID(), Material.leather, "futuremite:rabbit_hide")).setCraftingDifficultyAsComponent(100.0F).setUnlocalizedName("rabbitHide").setCreativeTab(CreativeTabs.tabMaterials);
-    public static final Item rabbitFoot = (new Items(getNextItemID(), Material.blaze, "futuremite:rabbit_foot")).setCraftingDifficultyAsComponent(25.0F).setUnlocalizedName("rabbitFoot").setPotionEffect(PotionHelper.blazePowderEffect).setCreativeTab(CreativeTabs.tabBrewing);
-    public static final Item bowlRabbitStew = (new ItemBowl(getNextItemID(), Material.beef_stew, "futuremite:bowls/rabbit_stew")).setFoodValue(12, 14, true, false, true).setPlantProduct().setUnlocalizedName("rabbit_stew");
+    public static final Item rabbitHide = (new Items(getNextItemID(), Material.leather, "futuremite:rabbit_hide")).setCraftingDifficultyAsComponent(100.0F).setUnlocalizedName("rabbitHide").setCreativeTab(FutureMITECreativeTabs.tabItem).setCreativeTab(FutureMITECreativeTabs.tabItem);
+    public static final Item rabbitFoot = (new Items(getNextItemID(), Material.blaze, "futuremite:rabbit_foot")).setCraftingDifficultyAsComponent(25.0F).setUnlocalizedName("rabbitFoot").setPotionEffect(PotionHelper.blazePowderEffect).setCreativeTab(CreativeTabs.tabBrewing).setCreativeTab(FutureMITECreativeTabs.tabItem);
+    public static final Item bowlRabbitStew = (new ItemBowl(getNextItemID(), Material.beef_stew, "futuremite:bowls/rabbit_stew")).setFoodValue(12, 14, true, false, true).setPlantProduct().setUnlocalizedName("rabbit_stew").setCreativeTab(FutureMITECreativeTabs.tabItem);
 
     public static final ItemArmorStand armorStand = new ItemArmorStand(getNextItemID(), Material.wood, "futuremite:wooden_armorstand");
 
     //海晶碎片
-    public static final Item prismarineShard = (new Items(getNextItemID(), Material.diamond, "futuremite:prismarine_shard")).setCraftingDifficultyAsComponent(100.0F).setUnlocalizedName("prismarineShard").setCreativeTab(CreativeTabs.tabMaterials);
+    public static final Item prismarineShard = (new Items(getNextItemID(), Material.diamond, "futuremite:prismarine_shard")).setCraftingDifficultyAsComponent(100.0F).setUnlocalizedName("prismarineShard").setCreativeTab(FutureMITECreativeTabs.tabItem);
     //海晶砂粒
-    public static final Item prismarineCrystals = (new Items(getNextItemID(), Material.diamond, "futuremite:prismarine_crystals")).setCraftingDifficultyAsComponent(100.0F).setUnlocalizedName("prismarineCrystals").setCreativeTab(CreativeTabs.tabMaterials);
+    public static final Item prismarineCrystals = (new Items(getNextItemID(), Material.diamond, "futuremite:prismarine_crystals")).setCraftingDifficultyAsComponent(100.0F).setUnlocalizedName("prismarineCrystals").setCreativeTab(FutureMITECreativeTabs.tabItem);
 
-    public static final Item woodChips = (new ItemWoodChips(getNextItemID(), Material.wood, "futuremite:wood_chips")).setUnlocalizedName("woodChips").setCreativeTab(CreativeTabs.tabMaterials);
+    public static final Item woodChips = (new ItemWoodChips(getNextItemID(), Material.wood, "futuremite:wood_chips")).setUnlocalizedName("woodChips").setCreativeTab(FutureMITECreativeTabs.tabItem);
 
     protected Items(int id, Material material, String texture) {
         super(id, material, texture);

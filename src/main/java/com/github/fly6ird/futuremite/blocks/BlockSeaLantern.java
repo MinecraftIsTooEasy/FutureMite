@@ -1,7 +1,9 @@
 package com.github.fly6ird.futuremite.blocks;
 
 
+import com.github.fly6ird.futuremite.creativetab.FutureMITECreativeTabs;
 import com.github.fly6ird.futuremite.items.Items;
+
 import net.minecraft.*;
 
 import java.util.Random;
@@ -14,7 +16,7 @@ public class BlockSeaLantern extends Block {
         setStepSound(soundGlassFootstep);
         setTextureName("futuremite:sea_lantern");
         setUnlocalizedName("sea_lantern");
-        setCreativeTab(CreativeTabs.tabDecorations);
+        this.setCreativeTab(FutureMITECreativeTabs.tabBlock);
     }
 
     //info.getHarvesterFortune()

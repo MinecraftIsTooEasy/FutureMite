@@ -1,5 +1,7 @@
 package com.github.fly6ird.futuremite.blocks;
 
+import com.github.fly6ird.futuremite.creativetab.FutureMITECreativeTabs;
+
 import net.minecraft.*;
 
 public class BlockDirtPath extends BlockUnderminable {
@@ -16,7 +18,7 @@ public class BlockDirtPath extends BlockUnderminable {
         this.setCushioning(0.4f);
         this.setHardness(0.6f);
         this.setStepSound(soundGrassFootstep);
-        this.setCreativeTab(CreativeTabs.tabBlock);
+        this.setCreativeTab(FutureMITECreativeTabs.tabBlock);
     }
 
     @Override

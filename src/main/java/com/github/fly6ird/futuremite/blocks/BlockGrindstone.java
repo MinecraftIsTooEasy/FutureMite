@@ -1,11 +1,11 @@
 package com.github.fly6ird.futuremite.blocks;
 
-
 import com.github.fly6ird.futuremite.api.IFutureMITEPlayer;
+import com.github.fly6ird.futuremite.creativetab.FutureMITECreativeTabs;
 import com.github.fly6ird.futuremite.render.RenderTypes;
 import com.github.fly6ird.futuremite.tileentities.TileEntityGrindstone;
-import net.minecraft.*;
 
+import net.minecraft.*;
 
 public class BlockGrindstone extends Block implements ITileEntityProvider {
     private Icon GrindStone;
@@ -15,7 +15,7 @@ public class BlockGrindstone extends Block implements ITileEntityProvider {
         this.setBlockBoundsForAllThreads(0.125, 0.0, 0.125, 0.875, 1.0, 0.875);
         this.setHardness(2.0F);
         this.setResistance(6.0F);
-        this.setCreativeTab(CreativeTabs.tabDecorations);
+        this.setCreativeTab(FutureMITECreativeTabs.tabBlock);
     }
 
     @Override

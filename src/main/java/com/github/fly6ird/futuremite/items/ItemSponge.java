@@ -1,5 +1,6 @@
 package com.github.fly6ird.futuremite.items;
 
+import com.github.fly6ird.futuremite.creativetab.FutureMITECreativeTabs;
 import net.minecraft.Block;
 import net.minecraft.ItemBlock;
 import net.minecraft.ItemStack;
@@ -7,6 +8,7 @@ import net.minecraft.ItemStack;
 public class ItemSponge extends ItemBlock {
     public ItemSponge(Block block) {
         super(block);
+        this.setCreativeTab(FutureMITECreativeTabs.tabItem);
     }
 
     public String getUnlocalizedName(ItemStack par1ItemStack) {
