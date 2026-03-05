@@ -22,6 +22,9 @@
     ],
     "carryon": [
       "com.github.fly6ird.futuremite.compat.FutureMITECarryOnPlugin"
+    ],
+    "emi": [
+      "com.github.fly6ird.futuremite.compat.FutureMITEEMIPlugin"
     ]
   },
   "mixins": [
