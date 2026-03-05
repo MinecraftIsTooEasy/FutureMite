@@ -76,9 +76,10 @@ tile.planks.cherry.name=樱花木板
 tile.cherry.slab.name=樱花木台阶
 tile.stairs.cherry.name=樱花木楼梯
 
-tile.iron_chain.name=铁锁链
 tile.copper_chain.name=铜锁链
 tile.silver_chain.name=银锁链
+tile.golden_chain.name=金锁链
+tile.iron_chain.name=铁锁链
 tile.ancient_chain.name=远古锁链
 tile.mithril_chain.name=秘银锁链
 tile.adamantium_chain.name=艾德曼锁链

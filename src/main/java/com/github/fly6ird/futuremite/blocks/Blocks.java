@@ -24,15 +24,16 @@ public class Blocks extends Block {
     public static final Block bigGrass = new BlockBigGrass(getNextBlockID(), "bigGrass").setHardness(0.02F).setCushioning(0.2F).setStepSound(soundGrassFootstep);
     public static final Block sweetBerryBush = new BlockSweetBerry(getNextBlockID());
 
-    public static final Block ironChain = new BlockChain(getNextBlockID(), Material.iron);
-    public static final Block silverChain = new BlockChain(getNextBlockID(), Material.silver);
     public static final Block copperChain = new BlockChain(getNextBlockID(), Material.copper);
-    public static final Block adamantiumChain = new BlockChain(getNextBlockID(), Material.adamantium);
+    public static final Block silverChain = new BlockChain(getNextBlockID(), Material.silver);
+    public static final Block goldenChain = new BlockChain(getNextBlockID(), Material.gold);
+    public static final Block ironChain = new BlockChain(getNextBlockID(), Material.iron);
     public static final Block ancientChain = new BlockChain(getNextBlockID(), Material.ancient_metal);
     public static final Block mithrilChain = new BlockChain(getNextBlockID(), Material.mithril);
+    public static final Block adamantiumChain = new BlockChain(getNextBlockID(), Material.adamantium);
 
-    public static final Block extinguishedCampfire = new BlockCampfire(getNextBlockID(), 0f, false);
     public static final Block campfire = new BlockCampfire(getNextBlockID(), 1.0f, true).setLightValue(0.6f);
+    public static final Block extinguishedCampfire = new BlockCampfire(getNextBlockID(), 0f, false);
     public static final Block soulCampfire = new BlockCampfire(getNextBlockID(), 2.0f, true).setLightValue(0.6666f);
 
     //public static final Block normalCampfire = new BlockExtinguishedCampfire(getNextBlockID());
@@ -135,15 +136,16 @@ public class Blocks extends Block {
         registryEvent.registerItemBlock(FutureMITEStart.NameSpaceCompact, "futuremite:sea_lantern", seaLantern);
         registryEvent.registerItemBlock(FutureMITEStart.NameSpaceCompact, grindStone);
 
+        registryEvent.registerItemBlock(FutureMITEStart.NameSpaceCompact, "copper_chain", copperChain);
+        registryEvent.registerItemBlock(FutureMITEStart.NameSpaceCompact, "silver_chain", silverChain);
+        registryEvent.registerItemBlock(FutureMITEStart.NameSpaceCompact, "golden_chain", goldenChain);
         registryEvent.registerItemBlock(FutureMITEStart.NameSpaceCompact, "iron_chain", ironChain);
         registryEvent.registerItemBlock(FutureMITEStart.NameSpaceCompact, "ancient_chain", ancientChain);
-        registryEvent.registerItemBlock(FutureMITEStart.NameSpaceCompact, "adamantium_chain", adamantiumChain);
-        registryEvent.registerItemBlock(FutureMITEStart.NameSpaceCompact, "silver_chain", silverChain);
-        registryEvent.registerItemBlock(FutureMITEStart.NameSpaceCompact, "copper_chain", copperChain);
         registryEvent.registerItemBlock(FutureMITEStart.NameSpaceCompact, "mithril_chain", mithrilChain);
+        registryEvent.registerItemBlock(FutureMITEStart.NameSpaceCompact, "adamantium_chain", adamantiumChain);
 
-        registryEvent.registerItemBlock(FutureMITEStart.NameSpaceCompact, "extinguished_Campfire", extinguishedCampfire);
         registryEvent.registerItemBlock(FutureMITEStart.NameSpaceCompact, "campfire", campfire);
+        registryEvent.registerItemBlock(FutureMITEStart.NameSpaceCompact, "extinguished_Campfire", extinguishedCampfire);
         registryEvent.registerItemBlock(FutureMITEStart.NameSpaceCompact, "soul_campfire", soulCampfire);
         //registryEvent.registerItemBlock(FutureMITEStart.NameSpaceCompact, "normalCampfire", normalCampfire);
 
@@ -225,24 +227,27 @@ public class Blocks extends Block {
             register.registerShapedRecipe(new ItemStack(grindStone, 1), true, "   ", "ABA", "C C", 'A', Item.getItem(Item.stick.itemID), 'B', Item.getItem(Block.stoneSingleSlab), 'C', new ItemStack(Block.planks, 1, i));
         }
 
-        register.registerShapedRecipe(new ItemStack(ironChain, 16), true, "A  ", "B  ", "A  ", 'A', Item.getItem(Item.ironNugget.itemID), 'B', Item.getItem(Item.ingotIron.itemID));
-        register.registerShapedRecipe(new ItemStack(ironChain, 16), true, " A ", " B ", " A ", 'A', Item.getItem(Item.ironNugget.itemID), 'B', Item.getItem(Item.ingotIron.itemID));
-        register.registerShapedRecipe(new ItemStack(ironChain, 16), true, "  A", "  B", "  A", 'A', Item.getItem(Item.ironNugget.itemID), 'B', Item.getItem(Item.ingotIron.itemID));
-        register.registerShapedRecipe(new ItemStack(adamantiumChain, 16), true, "A  ", "B  ", "A  ", 'A', Item.getItem(Item.adamantiumNugget.itemID), 'B', Item.getItem(Item.ingotAdamantium.itemID));
-        register.registerShapedRecipe(new ItemStack(adamantiumChain, 16), true, " A ", " B ", " A ", 'A', Item.getItem(Item.adamantiumNugget.itemID), 'B', Item.getItem(Item.ingotAdamantium.itemID));
-        register.registerShapedRecipe(new ItemStack(adamantiumChain, 16), true, "  A", "  B", "  A", 'A', Item.getItem(Item.adamantiumNugget.itemID), 'B', Item.getItem(Item.ingotAdamantium.itemID));
-        register.registerShapedRecipe(new ItemStack(ancientChain, 16), true, "A  ", "B  ", "A  ", 'A', Item.getItem(Item.ancientMetalNugget.itemID), 'B', Item.getItem(Item.ingotAncientMetal.itemID));
-        register.registerShapedRecipe(new ItemStack(ancientChain, 16), true, " A ", " B ", " A ", 'A', Item.getItem(Item.ancientMetalNugget.itemID), 'B', Item.getItem(Item.ingotAncientMetal.itemID));
-        register.registerShapedRecipe(new ItemStack(ancientChain, 16), true, "  A", "  B", "  A", 'A', Item.getItem(Item.ancientMetalNugget.itemID), 'B', Item.getItem(Item.ingotAncientMetal.itemID));
-        register.registerShapedRecipe(new ItemStack(silverChain, 16), true, "A  ", "B  ", "A  ", 'A', Item.getItem(Item.silverNugget.itemID), 'B', Item.getItem(Item.ingotSilver.itemID));
-        register.registerShapedRecipe(new ItemStack(silverChain, 16), true, " A ", " B ", " A ", 'A', Item.getItem(Item.silverNugget.itemID), 'B', Item.getItem(Item.ingotSilver.itemID));
-        register.registerShapedRecipe(new ItemStack(silverChain, 16), true, "  A", "  B", "  A", 'A', Item.getItem(Item.silverNugget.itemID), 'B', Item.getItem(Item.ingotSilver.itemID));
         register.registerShapedRecipe(new ItemStack(copperChain, 16), true, "A  ", "B  ", "A  ", 'A', Item.getItem(Item.copperNugget.itemID), 'B', Item.getItem(Item.ingotCopper.itemID));
         register.registerShapedRecipe(new ItemStack(copperChain, 16), true, " A ", " B ", " A ", 'A', Item.getItem(Item.copperNugget.itemID), 'B', Item.getItem(Item.ingotCopper.itemID));
         register.registerShapedRecipe(new ItemStack(copperChain, 16), true, "  A", "  B", "  A", 'A', Item.getItem(Item.copperNugget.itemID), 'B', Item.getItem(Item.ingotCopper.itemID));
+        register.registerShapedRecipe(new ItemStack(silverChain, 16), true, "A  ", "B  ", "A  ", 'A', Item.getItem(Item.silverNugget.itemID), 'B', Item.getItem(Item.ingotSilver.itemID));
+        register.registerShapedRecipe(new ItemStack(silverChain, 16), true, " A ", " B ", " A ", 'A', Item.getItem(Item.silverNugget.itemID), 'B', Item.getItem(Item.ingotSilver.itemID));
+        register.registerShapedRecipe(new ItemStack(silverChain, 16), true, "  A", "  B", "  A", 'A', Item.getItem(Item.silverNugget.itemID), 'B', Item.getItem(Item.ingotSilver.itemID));
+        register.registerShapedRecipe(new ItemStack(goldenChain, 16), true, "A  ", "B  ", "A  ", 'A', Item.getItem(Item.goldNugget.itemID), 'B', Item.getItem(Item.ingotGold.itemID));
+        register.registerShapedRecipe(new ItemStack(goldenChain, 16), true, " A ", " B ", " A ", 'A', Item.getItem(Item.goldNugget.itemID), 'B', Item.getItem(Item.ingotGold.itemID));
+        register.registerShapedRecipe(new ItemStack(goldenChain, 16), true, "  A", "  B", "  A", 'A', Item.getItem(Item.goldNugget.itemID), 'B', Item.getItem(Item.ingotGold.itemID));
+        register.registerShapedRecipe(new ItemStack(ironChain, 16), true, "A  ", "B  ", "A  ", 'A', Item.getItem(Item.ironNugget.itemID), 'B', Item.getItem(Item.ingotIron.itemID));
+        register.registerShapedRecipe(new ItemStack(ironChain, 16), true, " A ", " B ", " A ", 'A', Item.getItem(Item.ironNugget.itemID), 'B', Item.getItem(Item.ingotIron.itemID));
+        register.registerShapedRecipe(new ItemStack(ironChain, 16), true, "  A", "  B", "  A", 'A', Item.getItem(Item.ironNugget.itemID), 'B', Item.getItem(Item.ingotIron.itemID));
+        register.registerShapedRecipe(new ItemStack(ancientChain, 16), true, "A  ", "B  ", "A  ", 'A', Item.getItem(Item.ancientMetalNugget.itemID), 'B', Item.getItem(Item.ingotAncientMetal.itemID));
+        register.registerShapedRecipe(new ItemStack(ancientChain, 16), true, " A ", " B ", " A ", 'A', Item.getItem(Item.ancientMetalNugget.itemID), 'B', Item.getItem(Item.ingotAncientMetal.itemID));
+        register.registerShapedRecipe(new ItemStack(ancientChain, 16), true, "  A", "  B", "  A", 'A', Item.getItem(Item.ancientMetalNugget.itemID), 'B', Item.getItem(Item.ingotAncientMetal.itemID));
         register.registerShapedRecipe(new ItemStack(mithrilChain, 16), true, "A  ", "B  ", "A  ", 'A', Item.getItem(Item.mithrilNugget.itemID), 'B', Item.getItem(Item.ingotMithril.itemID));
         register.registerShapedRecipe(new ItemStack(mithrilChain, 16), true, " A ", " B ", " A ", 'A', Item.getItem(Item.mithrilNugget.itemID), 'B', Item.getItem(Item.ingotMithril.itemID));
         register.registerShapedRecipe(new ItemStack(mithrilChain, 16), true, "  A", "  B", "  A", 'A', Item.getItem(Item.mithrilNugget.itemID), 'B', Item.getItem(Item.ingotMithril.itemID));
+        register.registerShapedRecipe(new ItemStack(adamantiumChain, 16), true, "A  ", "B  ", "A  ", 'A', Item.getItem(Item.adamantiumNugget.itemID), 'B', Item.getItem(Item.ingotAdamantium.itemID));
+        register.registerShapedRecipe(new ItemStack(adamantiumChain, 16), true, " A ", " B ", " A ", 'A', Item.getItem(Item.adamantiumNugget.itemID), 'B', Item.getItem(Item.ingotAdamantium.itemID));
+        register.registerShapedRecipe(new ItemStack(adamantiumChain, 16), true, "  A", "  B", "  A", 'A', Item.getItem(Item.adamantiumNugget.itemID), 'B', Item.getItem(Item.ingotAdamantium.itemID));
 
         register.registerShapedRecipe(new ItemStack(soulTorch, 4), true, "A  ", "B  ", "C  ", 'A', Item.getItem(Item.coal.itemID), 'B', Item.getItem(Item.stick.itemID), 'C', Item.getItem(Block.slowSand));
         register.registerShapedRecipe(new ItemStack(soulTorch, 4), true, " A ", " B ", " C ", 'A', Item.getItem(Item.coal.itemID), 'B', Item.getItem(Item.stick.itemID), 'C', Item.getItem(Block.slowSand));

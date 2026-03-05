@@ -76,9 +76,10 @@ tile.planks.cherry.name=Cherry Planks
 tile.cherry.slab.name=Cherry Slab
 tile.stairs.cherry.name=Cherry Stairs
 
-tile.iron_chain.name=Iron Chain
 tile.copper_chain.name=Copper Chain
 tile.silver_chain.name=Silver Chain
+tile.golden_chain.name=Golden Chain
+tile.iron_chain.name=Iron Chain
 tile.ancient_chain.name=Ancient Chain
 tile.mithril_chain.name=Mithril Chain
 tile.adamantium_chain.name=Adamantium Chain
