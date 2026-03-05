@@ -128,8 +128,10 @@ tile.fences.spruce.name=Spruce Fence
 tile.fence_gates.spruce.name=Spruce Fence Gate
 tile.fences.acacia.name=Acacia Fence
 tile.fence_gates.acacia.name=Acacia Fence Gate
-tile.fences.dark_oak.name=Dark_Oak Fence
-tile.fence_gates.dark_oak.name=Dark_Oak Fence Gate
+tile.fences.dark_oak.name=Dark Oak Fence
+tile.fence_gates.dark_oak.name=Dark Oak Fence Gate
+tile.fences.cherry.name=Cherry Fence
+tile.fence_gates.cherry.name=Cherry Fence Gate
 
 tile.workbench.flint.oak_log.name=Oak Log with Flint Tool Bench 
 tile.workbench.flint.stripped_oak_log.name=Stripped Oak Log with Flint Tool Bench 

@@ -11,7 +11,7 @@ public class BlockModLog extends BlockRotatedPillar {
     protected BlockModLog(int par1) {
         super(par1, Material.wood);
         modifyMinHarvestLevel(1);
-        setHardness(0.9F);
+        setHardness(1.2F);
         setMaxStackSize(4);
         setStepSound(Blocks.stepSoundWood);
         this.setCreativeTab(FutureMITECreativeTabs.tabBlock);
@@ -20,7 +20,7 @@ public class BlockModLog extends BlockRotatedPillar {
     protected BlockModLog(int par1, String id) {
         super(par1, Material.wood);
         modifyMinHarvestLevel(1);
-        setHardness(0.9F);
+        setHardness(1.2F);
         setMaxStackSize(4);
         setStepSound(Blocks.stepSoundWood);
         this.setCreativeTab(FutureMITECreativeTabs.tabBlock);

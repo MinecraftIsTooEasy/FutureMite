@@ -349,6 +349,7 @@ public class Blocks extends Block {
             blockWoodFenceExtend.registerRecipe(register);
         }
         register.registerShapedRecipe(new ItemStack(Block.fence, 3), true, "ABA", "ABA", 'A', new ItemStack(Block.planks, 1, 0), 'B', Item.stick);
+        register.registerShapedRecipe(new ItemStack(Block.fence, 2), true, "SSS", "SSS", 'S', Item.stick);
     }
 
     public static void furnaceRecipe() {

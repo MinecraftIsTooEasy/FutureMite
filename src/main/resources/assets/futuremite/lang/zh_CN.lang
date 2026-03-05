@@ -130,6 +130,8 @@ tile.fences.acacia.name=金合欢木栅栏
 tile.fence_gates.acacia.name=金合欢木栅栏门
 tile.fences.dark_oak.name=深色橡木栅栏
 tile.fence_gates.dark_oak.name=深色橡木栅栏门
+tile.fences.cherry.name=樱花木栅栏
+tile.fence_gates.cherry.name=樱花木栅栏门
 
 tile.workbench.flint.oak_log.name=橡树原木燧石工具台
 tile.workbench.flint.stripped_oak_log.name=去皮橡树原木燧石工具台
