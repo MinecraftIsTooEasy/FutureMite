@@ -1,9 +1,11 @@
 package com.github.fly6ird.futuremite.blocks;
 
 import com.github.fly6ird.futuremite.FutureMITEStart;
+import com.github.fly6ird.futuremite.creativetab.FutureMITECreativeTabs;
 import com.github.fly6ird.futuremite.items.ItemModLeaves;
 
 import moddedmite.rustedironcore.api.block.DoorBlock;
+import moddedmite.rustedironcore.api.block.WorkbenchBlock;
 import moddedmite.rustedironcore.api.item.DoorItem;
 
 import net.minecraft.*;
@@ -14,8 +16,8 @@ import static com.github.fly6ird.futuremite.blocks.Blocks.getNextBlockID;
 import static net.xiaoyu233.fml.reload.utils.IdUtil.getNextItemID;
 
 public class TreeHelper {
-    public final String id;
 
+    public final String id;
     public final BlockModLog Log;
     public final BlockModWoodPlanks Planks;
     public final BlockModLeaves Leaves;
@@ -30,6 +32,8 @@ public class TreeHelper {
     public final BlockStrippedWood StrippedWood;
     public final Block Fence;
     public final Block FenceGate;
+    public final WorkbenchBlock FlintWorkbench;
+    public final WorkbenchBlock ObsidianWorkbench;
 
     public TreeHelper(String id) {
         this.id = id;
@@ -44,6 +48,8 @@ public class TreeHelper {
         this.StrippedWood = new BlockStrippedWood(getNextBlockID(), id);
         this.Fence = new BlockModFence(getNextBlockID(), id, this.Planks);
         this.FenceGate = new BlockModFenceGate(getNextBlockID(), id, this.Planks);
+        this.FlintWorkbench = (WorkbenchBlock) new FMWorkBenchBlock(getNextBlockID(), Material.flint, 0.2F, Material.flint, id, false).setCreativeTab(FutureMITECreativeTabs.tabBlock);
+        this.ObsidianWorkbench = (WorkbenchBlock) new FMWorkBenchBlock(getNextBlockID(), Material.obsidian, 0.2F, Material.obsidian, id, true ).setCreativeTab(FutureMITECreativeTabs.tabBlock);
     }
 
     public void registerRecipes(RecipeRegistryEvent register) {
@@ -79,19 +85,18 @@ public class TreeHelper {
 
         register.registerShapedRecipe(new ItemStack(Blocks.soulCampfire, 1), true, " A ", "ABA", "CCC", 'A', Item.getItem(Item.stick.itemID), 'B', Item.getItem(Block.slowSand), 'C', Item.getItem(Log));
 
+        register.registerShapedRecipe(new ItemStack(FlintWorkbench, 1), true, "K", "#", 'K', Item.knifeFlint, '#', new ItemStack(Log));
+        register.registerShapedRecipe(new ItemStack(FlintWorkbench, 1), true, "FS", "s#", 'F', Item.flint, 'S', Item.silk,  's', Item.stick, '#', new ItemStack(Log));
+        register.registerShapedRecipe(new ItemStack(FlintWorkbench, 1), true, "FS", "s#", 'F', Item.flint, 'S', Item.sinew, 's', Item.stick, '#', new ItemStack(Log));
 
-        for (int i = 0; i < Block.workbench.getNumSubBlocks(); i++)
-        {
-            Material material = BlockWorkbench.getToolMaterial(i);
-            if (material == Material.flint)
-            {
-                register.registerShapedRecipe(new ItemStack(Block.workbench, 1, i), true, "FS", "s#", 'F', Item.flint, 'S', Item.silk,  's', Item.stick, '#', new ItemStack(Log));
-                register.registerShapedRecipe(new ItemStack(Block.workbench, 1, i), true, "FS", "s#", 'F', Item.flint, 'S', Item.sinew, 's', Item.stick, '#', new ItemStack(Log));
-            }
-            else if (material == Material.obsidian)
-            {
-                register.registerShapedRecipe(new ItemStack(Block.workbench, 1, i), true, "OS", "s#", 'O', Block.obsidian, 'S', Item.silk,  's', Item.stick, '#', new ItemStack(Log));
-                register.registerShapedRecipe(new ItemStack(Block.workbench, 1, i), true, "OS", "s#", 'O', Block.obsidian, 'S', Item.sinew, 's', Item.stick, '#', new ItemStack(Log));
+        register.registerShapedRecipe(new ItemStack(ObsidianWorkbench, 1), true, "K", "#", 'K', Item.knifeObsidian, '#', new ItemStack(Log));
+        register.registerShapedRecipe(new ItemStack(ObsidianWorkbench, 1), true, "OS", "s#", 'O', Block.obsidian, 'S', Item.silk,  's', Item.stick, '#', new ItemStack(Log));
+        register.registerShapedRecipe(new ItemStack(ObsidianWorkbench, 1), true, "OS", "s#", 'O', Block.obsidian, 'S', Item.sinew, 's', Item.stick, '#', new ItemStack(Log));
+
+        for (int i = 0; i < Block.workbench.getNumSubBlocks(); i++) {
+            Item ingot = ItemIngot.getMatchingItem(ItemIngot.class, BlockWorkbench.getToolMaterial(i));
+            if (ingot != null) {
+                register.registerShapedRecipe(new ItemStack(Block.workbench, 1, i), true, "IL", "s#", 'I', ingot, 'L', Item.leather, 's', Item.stick, '#', new ItemStack(Planks));
             }
         }
     }
@@ -116,6 +121,9 @@ public class TreeHelper {
 
         registryEvent.registerItemBlock(FutureMITEStart.NameSpaceCompact, "futuremite:planks/" + id, "fences." + id, this.Fence);
         registryEvent.registerItemBlock(FutureMITEStart.NameSpaceCompact, "futuremite:planks/" + id, "fence_gates." + id, this.FenceGate);
+
+        registryEvent.registerItemBlock(FutureMITEStart.NameSpaceCompact, this.FlintWorkbench);
+        registryEvent.registerItemBlock(FutureMITEStart.NameSpaceCompact, this.ObsidianWorkbench);
 
         Item.itemsList[this.SingleSlab.blockID] = (new ItemSlab(this.SingleSlab, this.DoubleSlab, false));
         Item.itemsList[this.DoubleSlab.blockID] = (new ItemSlab(this.SingleSlab, this.DoubleSlab, true));

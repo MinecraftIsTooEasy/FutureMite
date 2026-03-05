@@ -95,12 +95,6 @@ public class Blocks extends Block {
     public static final Block strippedJungleWood = new BlockStrippedWood(getNextBlockID());
     public static final Block strippedOakWood = new BlockStrippedWood(getNextBlockID());
     public static final Block strippedSpruceWood = new BlockStrippedWood(getNextBlockID());
-/*
-    public static final BlockWoodWorkBench oakWorkbench = (new BlockWoodWorkBench(getNextBlockID(), oakLog));
-    public static final BlockWoodWorkBench birchWorkbench = (new BlockWoodWorkBench(getNextBlockID(), birchLog));
-    public static final BlockWoodWorkBench jungleWorkbench = (new BlockWoodWorkBench(getNextBlockID(), jungleLog));
-    public static final BlockWoodWorkBench spruceWorkbench = (new BlockWoodWorkBench(getNextBlockID(), spruceLog));
-*/
 
 
     public static final BlockModTrapDoor birchTrapDoor = (new BlockModTrapDoor(getNextBlockID(), "birch"));
