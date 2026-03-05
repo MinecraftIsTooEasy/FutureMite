@@ -83,10 +83,11 @@ tile.ancient_chain.name=远古锁链
 tile.mithril_chain.name=秘银锁链
 tile.adamantium_chain.name=艾德曼锁链
 
-tile.iron_lantern.name=铁灯笼
-tile.soul_lantern.name=灵魂灯笼
 tile.copper_lantern.name=铜灯笼
 tile.silver_lantern.name=银灯笼
+tile.golden_lantern.name=金灯笼
+tile.iron_lantern.name=铁灯笼
+tile.soul_lantern.name=灵魂灯笼
 tile.ancient_lantern.name=远古灯笼
 tile.mithril_lantern.name=秘银灯笼
 tile.adamantium_lantern.name=艾德曼灯笼

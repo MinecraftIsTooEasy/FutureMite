@@ -83,10 +83,11 @@ tile.ancient_chain.name=Ancient Chain
 tile.mithril_chain.name=Mithril Chain
 tile.adamantium_chain.name=Adamantium Chain
 
-tile.iron_lantern.name=Iron Lantern
-tile.soul_lantern.name=Soul Lantern
 tile.copper_lantern.name=Copper Lantern
 tile.silver_lantern.name=Silver Lantern
+tile.golden_lantern.name=Golden Lantern
+tile.iron_lantern.name=Iron Lantern
+tile.soul_lantern.name=Soul Lantern
 tile.ancient_lantern.name=Ancient Lantern
 tile.mithril_lantern.name=Mithril Lantern
 tile.adamantium_lantern.name=Adamantium Lantern

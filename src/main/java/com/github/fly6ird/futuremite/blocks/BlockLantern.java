@@ -11,11 +11,12 @@ public class BlockLantern extends Block {
     Icon blocklantern;
     Icon itemlantern;
 
-    protected BlockLantern(int par1) {
-        super(par1, Material.wood, new BlockConstants().setNotAlwaysLegal().setNeverHidesAdjacentFaces());
+    protected BlockLantern(int par1, Material material) {
+        super(par1, material, new BlockConstants().setNotAlwaysLegal().setNeverHidesAdjacentFaces());
         this.setLightValue(1.0f);
         this.setHardness(0.5f);
-        this.setMaxStackSize(1);
+        this.setMinHarvestLevel(1);
+        this.setMaxStackSize(16);
         this.setBlockBoundsForAllThreads(0.3125, 0.0, 0.3125, 0.6878, 1.0, 0.6878);
         this.setStepSound(stepSoundLantern);
         this.setCreativeTab(FutureMITECreativeTabs.tabBlock);
