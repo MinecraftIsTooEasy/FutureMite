@@ -27,16 +27,18 @@ public class BlockModLeaves extends BlockLeavesBase {
 
     @Override
     public int colorMultiplier(IBlockAccess blockAccess, int x, int y, int z) {
+        if (id.equals("acacia") || id.equals("dark_oak")) return 0x619961;
         return 0xffffff;
     }
 
     @Override
     public int getRenderColor(int metadata) {
+        if (id.equals("acacia") || id.equals("dark_oak")) return 0x619961;
         return 0xffffff;
     }
 
-
     public int getBlockColor() {
+        if (id.equals("acacia") || id.equals("dark_oak")) return 0x619961;
         double var1 = 0.5;
         double var3 = 1.0;
         return ColorizerFoliage.getFoliageColor(var1, var3);
