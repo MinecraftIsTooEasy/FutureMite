@@ -57,88 +57,69 @@ public class TreeHelper {
     }
 
     public void registerRecipes(RecipeRegistryEvent register) {
-        register.registerShapedRecipe(new ItemStack(Planks, 4), true, "A", 'A', Log);
-        register.registerShapedRecipe(new ItemStack(Planks, 4), true, "A", 'A', StrippedLog);
+
+        for (Block log : new Block[]{Log, StrippedLog})
+            register.registerShapedRecipe(new ItemStack(Planks, 4), true, "A", 'A', log);
 
         register.registerShapedRecipe(new ItemStack(Item.stick, 4), true, "A", "A", 'A', new ItemStack(Planks));
 
-        register.registerShapedRecipe(new ItemStack(StrippedWood, 3), true, "AA ", "AA ", "   ", 'A', Item.getItem(StrippedLog));
-        register.registerShapedRecipe(new ItemStack(StrippedWood, 3), true, " AA", " AA", "   ", 'A', Item.getItem(StrippedLog));
-        register.registerShapedRecipe(new ItemStack(StrippedWood, 3), true, "   ", "AA ", "AA ", 'A', Item.getItem(StrippedLog));
-        register.registerShapedRecipe(new ItemStack(StrippedWood, 3), true, "   ", " AA", " AA", 'A', Item.getItem(StrippedLog));
+        for (String pattern : new String[]{"AA |AA |   ", " AA| AA|   ", "   |AA |AA ", "   | AA| AA"}) {
+            String[] rows = pattern.split("\\|");
+            register.registerShapedRecipe(new ItemStack(StrippedWood, 3), true, rows[0], rows[1], rows[2], 'A', Item.getItem(StrippedLog));
+        }
 
         register.registerShapedRecipe(new ItemStack(Stairs, 4), true, "A  ", "AA ", "AAA", 'A', new ItemStack(Planks));
-
         register.registerShapedRecipe(new ItemStack(SingleSlab, 6), true, "AAA", 'A', new ItemStack(Planks));
-
         TrapDoor.registerRecipe(register);
-
-        register.registerShapedRecipe(new ItemStack(this.ItemDoor, 1), true, "AA", "AA", "AA", 'A', new ItemStack((this.Planks), 1));
+        register.registerShapedRecipe(new ItemStack(this.ItemDoor, 1), true, "AA", "AA", "AA", 'A', new ItemStack(this.Planks, 1));
 
         register.registerShapedRecipe(new ItemStack(Fence, 3), true, "ABA", "ABA", 'A', new ItemStack(Planks), 'B', Item.stick);
         register.registerShapedRecipe(new ItemStack(Fence, 2), true, "SSS", "SSS", 'S', Item.stick);
-
         register.registerShapedRecipe(new ItemStack(FenceGate, 1), true, "ABA", "ABA", 'A', Item.stick, 'B', new ItemStack(Planks));
 
         register.registerShapedRecipe(new ItemStack(Block.chest, 1), true, "AAA", "A A", "AAA", 'A', new ItemStack(Planks));
-
         register.registerShapedRecipe(new ItemStack(Blocks.barrel, 1), true, "ABA", "A A", "ABA", 'A', new ItemStack(Planks), 'B', new ItemStack(SingleSlab));
 
-        register.registerShapedRecipe(new ItemStack(Blocks.campfire, 1), true, " A ", "ABA", "CCC", 'A', Item.getItem(Item.stick.itemID), 'B', Item.getItem(Item.coal.itemID), 'C', Item.getItem(Log));
-        register.registerShapedRecipe(new ItemStack(Blocks.campfire, 1), true, " A ", "ABA", "CCC", 'A', Item.getItem(Item.stick.itemID), 'B', new ItemStack(Item.coal, 1, 1), 'C', Item.getItem(Log));
+        Item stick = Item.getItem(Item.stick.itemID), logItem = Item.getItem(Log);
+        for (Object fuel : new Object[]{Item.getItem(Item.coal.itemID), new ItemStack(Item.coal, 1, 1)})
+            register.registerShapedRecipe(new ItemStack(Blocks.campfire, 1), true, " A ", "ABA", "CCC", 'A', stick, 'B', fuel, 'C', logItem);
+        register.registerShapedRecipe(new ItemStack(Blocks.soulCampfire, 1), true, " A ", "ABA", "CCC", 'A', stick, 'B', Item.getItem(Block.slowSand), 'C', logItem);
 
-        register.registerShapedRecipe(new ItemStack(Blocks.soulCampfire, 1), true, " A ", "ABA", "CCC", 'A', Item.getItem(Item.stick.itemID), 'B', Item.getItem(Block.slowSand), 'C', Item.getItem(Log));
+        WorkbenchBlock[] workbenchBlock = {FlintWorkbench, ObsidianWorkbench, FlintStrippedWorkbench, ObsidianStrippedWorkbench};
+        Block[] wbLogs = {Log, Log, StrippedLog, StrippedLog};
+        Object[] knives = {Item.knifeFlint, Item.knifeObsidian, Item.knifeFlint, Item.knifeObsidian};
+        Object[] mats = {Item.flint, Block.obsidian, Item.flint, Block.obsidian};
+        for (int index = 0; index < workbenchBlock.length; index++) {
+            Object log = new ItemStack(wbLogs[index]);
+            register.registerShapedRecipe(new ItemStack(workbenchBlock[index], 1), true, "K", "L", 'K', knives[index], 'L', log);
+            for (Object binding : new Object[]{Item.silk, Item.sinew})
+                register.registerShapedRecipe(new ItemStack(workbenchBlock[index], 1), true, "FS", "KL", 'F', mats[index], 'S', binding, 'K', Item.stick, 'L', log);
+        }
 
-        register.registerShapedRecipe(new ItemStack(FlintWorkbench, 1), true, "K", "L", 'K', Item.knifeFlint, 'L', new ItemStack(Log));
-        register.registerShapedRecipe(new ItemStack(FlintWorkbench, 1), true, "FS", "KL", 'F', Item.flint, 'S', Item.silk,  'K', Item.stick, 'L', new ItemStack(Log));
-        register.registerShapedRecipe(new ItemStack(FlintWorkbench, 1), true, "FS", "KL", 'F', Item.flint, 'S', Item.sinew, 'K', Item.stick, 'L', new ItemStack(Log));
-
-        register.registerShapedRecipe(new ItemStack(ObsidianWorkbench, 1), true, "K", "L", 'K', Item.knifeObsidian, 'L', new ItemStack(Log));
-        register.registerShapedRecipe(new ItemStack(ObsidianWorkbench, 1), true, "OS", "KL", 'O', Block.obsidian, 'S', Item.silk,  'K', Item.stick, 'L', new ItemStack(Log));
-        register.registerShapedRecipe(new ItemStack(ObsidianWorkbench, 1), true, "OS", "KL", 'O', Block.obsidian, 'S', Item.sinew, 'K', Item.stick, 'L', new ItemStack(Log));
-
-        register.registerShapedRecipe(new ItemStack(FlintStrippedWorkbench, 1), true, "K", "L", 'K', Item.knifeFlint, 'L', new ItemStack(StrippedLog));
-        register.registerShapedRecipe(new ItemStack(FlintStrippedWorkbench, 1), true, "FS", "KL", 'F', Item.flint, 'S', Item.silk,  'K', Item.stick, 'L', new ItemStack(StrippedLog));
-        register.registerShapedRecipe(new ItemStack(FlintStrippedWorkbench, 1), true, "FS", "KL", 'F', Item.flint, 'S', Item.sinew, 'K', Item.stick, 'L', new ItemStack(StrippedLog));
-
-        register.registerShapedRecipe(new ItemStack(ObsidianStrippedWorkbench, 1), true, "K", "L", 'K', Item.knifeObsidian, 'L', new ItemStack(StrippedLog));
-        register.registerShapedRecipe(new ItemStack(ObsidianStrippedWorkbench, 1), true, "OS", "KL", 'O', Block.obsidian, 'S', Item.silk,  'K', Item.stick, 'L', new ItemStack(StrippedLog));
-        register.registerShapedRecipe(new ItemStack(ObsidianStrippedWorkbench, 1), true, "OS", "KL", 'O', Block.obsidian, 'S', Item.sinew, 'K', Item.stick, 'L', new ItemStack(StrippedLog));
-
-        for (int i = 0; i < Block.workbench.getNumSubBlocks(); i++) {
-            Item ingot = ItemIngot.getMatchingItem(ItemIngot.class, BlockWorkbench.getToolMaterial(i));
-            if (ingot != null) {
-                register.registerShapedRecipe(new ItemStack(Block.workbench, 1, i), true, "IL", "KP", 'I', ingot, 'L', Item.leather, 'K', Item.stick, 'P', new ItemStack(Planks));
-            }
+        for (int subIndex = 0; subIndex < Block.workbench.getNumSubBlocks(); subIndex++) {
+            Item ingot = ItemIngot.getMatchingItem(ItemIngot.class, BlockWorkbench.getToolMaterial(subIndex));
+            if (ingot != null)
+                register.registerShapedRecipe(new ItemStack(Block.workbench, 1, subIndex), true, "IL", "KP", 'I', ingot, 'L', Item.leather, 'K', Item.stick, 'P', new ItemStack(Planks));
         }
     }
 
-    //注册物品事件
     public void registerItemBlocks(ItemRegistryEvent registryEvent) {
         registryEvent.register(FutureMITEStart.NameSpaceCompact, "futuremite:doors/" + id, "doors." + id, this.ItemDoor);
         registryEvent.registerItemBlock(FutureMITEStart.NameSpaceCompact, "futuremite:planks/" + id, "planks." + id, this.Planks);
         registryEvent.registerItemBlock(FutureMITEStart.NameSpaceCompact, this.DoubleSlab);
         registerModItemBlocks(registryEvent, this.SingleSlab, id);
         registryEvent.registerItemBlock(FutureMITEStart.NameSpaceCompact, "futuremite:doors/" + id, id + "_door", this.Door);
-
         registryEvent.registerItemBlock(FutureMITEStart.NameSpaceCompact, id, "log." + id + "_log", this.Log); this.Log.setUnlocalizedName("log." + id + "_log");
-
         registryEvent.registerItemBlock(FutureMITEStart.NameSpaceCompact, "stripped_" + id, "log.stripped_" + id + "_log", this.StrippedLog);
-
         registryEvent.registerItemBlock(FutureMITEStart.NameSpaceCompact, "futuremite:log/stripped_" + id + "_side", "log.stripped_" + id + "_wood", this.StrippedWood);
         registerModItemBlocks(registryEvent, this.Leaves, "leaves." + id);
         registerModItemBlocks(registryEvent, this.Stairs, "stairs." + id);
         registryEvent.registerItemBlock(FutureMITEStart.NameSpaceCompact, this.TrapDoor);
         registryEvent.registerItemBlock(FutureMITEStart.NameSpaceCompact, "futuremite:sapling/" + id + "_sapling", id + "_sapling", this.Sapling);
-
         registryEvent.registerItemBlock(FutureMITEStart.NameSpaceCompact, "futuremite:planks/" + id, "fences." + id, this.Fence);
         registryEvent.registerItemBlock(FutureMITEStart.NameSpaceCompact, "futuremite:planks/" + id, "fence_gates." + id, this.FenceGate);
-
-        registryEvent.registerItemBlock(FutureMITEStart.NameSpaceCompact, this.FlintWorkbench);
-        registryEvent.registerItemBlock(FutureMITEStart.NameSpaceCompact, this.ObsidianWorkbench);
-        registryEvent.registerItemBlock(FutureMITEStart.NameSpaceCompact, this.FlintStrippedWorkbench);
-        registryEvent.registerItemBlock(FutureMITEStart.NameSpaceCompact, this.ObsidianStrippedWorkbench);
-
+        for (WorkbenchBlock workbenchBlock : new WorkbenchBlock[]{FlintWorkbench, ObsidianWorkbench, FlintStrippedWorkbench, ObsidianStrippedWorkbench})
+            registryEvent.registerItemBlock(FutureMITEStart.NameSpaceCompact, workbenchBlock);
         Item.itemsList[this.SingleSlab.blockID] = (new ItemSlab(this.SingleSlab, this.DoubleSlab, false));
         Item.itemsList[this.DoubleSlab.blockID] = (new ItemSlab(this.SingleSlab, this.DoubleSlab, true));
         Item.itemsList[this.Leaves.blockID] = (new ItemModLeaves(this.Leaves));
