@@ -14,4 +14,14 @@ public class BlockStrippedWood extends Block {
         setStepSound(Blocks.stepSoundWood);
         this.setCreativeTab(FutureMITECreativeTabs.tabBlock);
     }
+
+    protected BlockStrippedWood(int par1, String id) {
+        super(par1, Material.wood, new BlockConstants());
+        modifyMinHarvestLevel(1);
+        setHardness(1.0F);
+        setStepSound(Blocks.stepSoundWood);
+        this.setCreativeTab(FutureMITECreativeTabs.tabBlock);
+        this.setTextureName("futuremite:log/stripped_" + id + "_side");
+        this.setUnlocalizedName("log.stripped_" + id + "_wood");
+    }
 }

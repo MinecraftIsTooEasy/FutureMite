@@ -26,6 +26,8 @@ public class TreeHelper {
     public final DoorBlock Door = new DoorBlock(getNextBlockID(), Material.wood, () -> this.ItemDoor);
     public final DoorItem ItemDoor = new DoorItem(getNextItemID(), Material.wood, () -> this.Door);
     public final BlockModTrapDoor TrapDoor;
+    public final BlockStrippedLog StrippedLog;
+    public final BlockStrippedWood StrippedWood;
 
     public TreeHelper(String id) {
         this.id = id;
@@ -36,17 +38,24 @@ public class TreeHelper {
         this.DoubleSlab = (new BlockDoubleSlab(getNextBlockID(), this.SingleSlab));
         this.TrapDoor = (new BlockModTrapDoor(getNextBlockID(), id, Planks));
         this.Leaves = new BlockModLeaves(getNextBlockID(), id, this);
+        this.StrippedLog = new BlockStrippedLog(getNextBlockID(), id);
+        this.StrippedWood = new BlockStrippedWood(getNextBlockID(), id);
     }
 
     public void registerRecipes(RecipeRegistryEvent register) {
-        for (int i = 0; i <= 1; i++)
-            register.registerShapedRecipe(new ItemStack(Log, 3, i + 2), true, "AA", "AA", 'A', new ItemStack(Log, 1, i));
         register.registerShapedRecipe(new ItemStack(Planks, 4), true, "A", 'A', Log);
+        register.registerShapedRecipe(new ItemStack(Planks, 4), true, "A", 'A', StrippedLog);
         register.registerShapedRecipe(new ItemStack(Stairs, 4), true, "A  ", "AA ", "AAA", 'A', new ItemStack(Planks));
         register.registerShapedRecipe(new ItemStack(SingleSlab, 6), true, "AAA", 'A', new ItemStack(Planks));
         TrapDoor.registerRecipe(register);
 
         register.registerShapedRecipe(new ItemStack(this.ItemDoor, 1), true, new Object[]{"AA", "AA", "AA", Character.valueOf('A'), new ItemStack((this.Planks), 1)});
+
+        // Peeled logs → Peeled wood (2x2 round logs combined)
+        register.registerShapedRecipe(new ItemStack(StrippedWood, 3), true, "AA ", "AA ", "   ", 'A', Item.getItem(StrippedLog));
+        register.registerShapedRecipe(new ItemStack(StrippedWood, 3), true, " AA", " AA", "   ", 'A', Item.getItem(StrippedLog));
+        register.registerShapedRecipe(new ItemStack(StrippedWood, 3), true, "   ", "AA ", "AA ", 'A', Item.getItem(StrippedLog));
+        register.registerShapedRecipe(new ItemStack(StrippedWood, 3), true, "   ", " AA", " AA", 'A', Item.getItem(StrippedLog));
     }
 
     //注册物品事件
@@ -56,7 +65,12 @@ public class TreeHelper {
         registryEvent.registerItemBlock(FutureMITEStart.NameSpaceCompact, this.DoubleSlab);
         registerModItemBlocks(registryEvent, this.SingleSlab, id);
         registryEvent.registerItemBlock(FutureMITEStart.NameSpaceCompact, "futuremite:doors/" + id, id + "_door", this.Door);
-        registerModItemBlocks(registryEvent, this.Log, "log." + id + "_wood");
+
+        registryEvent.registerItemBlock(FutureMITEStart.NameSpaceCompact, id, "log." + id + "_log", this.Log); this.Log.setUnlocalizedName("log." + id + "_log");
+
+        registryEvent.registerItemBlock(FutureMITEStart.NameSpaceCompact, "stripped_" + id, "log.stripped_" + id + "_log", this.StrippedLog);
+
+        registryEvent.registerItemBlock(FutureMITEStart.NameSpaceCompact, "futuremite:log/stripped_" + id + "_side", "log.stripped_" + id + "_wood", this.StrippedWood);
         registerModItemBlocks(registryEvent, this.Leaves, "leaves." + id);
         registerModItemBlocks(registryEvent, this.Stairs, "stairs." + id);
         registryEvent.registerItemBlock(FutureMITEStart.NameSpaceCompact, this.TrapDoor);

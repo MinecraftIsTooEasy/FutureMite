@@ -52,24 +52,29 @@ tile.prismarine_block.dark.name=Dark Prismarine
 item.prismarineShard.name=Prismarine Shard
 item.prismarineCrystals.name=Prismarine Crystal
 
+tile.log.acacia_log.name=Acacia Log
+tile.log.stripped_acacia_log.name=Stripped Acacia Log
+tile.log.stripped_acacia_wood.name=Stripped Acacia Wood
 tile.acacia_sapling.name=Acacia Sapling
 tile.planks.acacia.name=Acacia Planks
 tile.acacia.slab.name=Acacia Slab
 tile.stairs.acacia.name=Acacia Stairs
+
+tile.log.dark_oak_log.name=Dark Oak Log
+tile.log.stripped_dark_oak_log.name=Stripped Dark Oak Log
+tile.log.stripped_dark_oak_wood.name=Stripped Dark Oak Wood
+tile.dark_oak_sapling.name=Dark Oak Sapling
 tile.planks.dark_oak.name=Dark_Oak Planks
 tile.dark_oak.slab.name=Dark_Oak Slab
 tile.stairs.dark_oak.name=Dark_Oak Stairs
 
+tile.log.cherry_log.name=Cherry Log
+tile.log.stripped_cherry_log.name=Stripped Cherry Log
+tile.log.stripped_cherry_wood.name=Stripped Cherry Wood
 tile.cherry_sapling.name=Cherry Sapling
 tile.planks.cherry.name=Cherry Planks
 tile.cherry.slab.name=Cherry Slab
 tile.stairs.cherry.name=Cherry Stairs
-tile.log.cherry_log.name=Cherry Log
-tile.log.cherry_wood.name=Cherry Wood
-tile.log.stripped_cherry_log.name=Stripped Cherry Log
-tile.log.stripped_cherry_wood.name=Stripped Cherry Wood
-tile.trapdoors.cherry.name=Cherry TrapDoor
-item.doors.cherry.name=Cherry Door
 
 tile.iron_chain.name=Iron Chain
 tile.copper_chain.name=Copper Chain
@@ -95,11 +100,6 @@ tile.log.jungle_log.name=Jungle Log
 tile.log.stripped_jungle_wood.name=Stripped Jungle Wood
 tile.log.spruce_log.name=Spruce Log
 tile.log.stripped_spruce_wood.name=Stripped Spruce Wood
-tile.log.acacia_wood.name=Acacia Wood
-tile.log.acacia_log.name=Acacia Log
-tile.log.stripped_acacia_wood.name=Stripped Acacia Wood
-tile.log.dark_oak_wood.name=Dark Oak Wood
-tile.log.stripped_dark_oak_wood.name=Stripped Dark Oak Wood
 
 item.oak_boat.name=Oak Boat
 item.oak_chest_boat.name=Oak Chest Boat
@@ -188,6 +188,7 @@ item.doors.spruce.name=Spruce Door
 tile.doors.spruce.name=Spruce Door
 item.doors.acacia.name=Acacia Door
 tile.doors.acacia.name=Acacia Door
+item.doors.cherry.name=Cherry Door
 item.doors.dark_oak.name=Dark Oak Door
 tile.doors.dark_oak.name=Dark Oak Door
 
@@ -196,6 +197,7 @@ tile.trapdoors.birch.name=Birch Trapdoor
 tile.trapdoors.jungle.name=Jungle Trapdoor
 tile.trapdoors.spruce.name=Spruce Trapdoor
 tile.trapdoors.acacia.name=Acacia Trapdoor
+tile.trapdoors.cherry.name=Cherry TrapDoor
 tile.trapdoors.dark_oak.name=Dark Oak Trapdoor
 
 leaves.acacia.name=Acacia Leaves
@@ -203,7 +205,6 @@ leaves.dark_oak.name=Dark Oak Leaves
 leaves.cherry.name=Cherry Leaves
 
 item.woodChips.name=Wood Chips
-tile.dark_oak_sapling.name=Dark Oak Sapling
 tile.extinguished_Campfire.name=Extinguished Campfire
 
 campfire.burntime=Burn Time

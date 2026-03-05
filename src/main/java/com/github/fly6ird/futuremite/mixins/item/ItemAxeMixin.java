@@ -11,39 +11,72 @@ import org.spongepowered.asm.mixin.Unique;
 import java.util.Random;
 
 
-@Mixin({ItemAxe.class})
+@Mixin(ItemAxe.class)
 public abstract class ItemAxeMixin extends ItemTool {
     protected ItemAxeMixin(int par1, Material material) {
         super(par1, material);
     }
 
-    @Shadow
-    public abstract float getBaseDamageVsEntity();
+    @Shadow public abstract float getBaseDamageVsEntity();
 
     @Unique
-    private static boolean tryBecomeWood(World world, int x, int y, int z, EnumFace face, EntityPlayer player, ItemStack item_stack) {
-        if (!player.canPlayerEdit(x, y, z, item_stack)) {
+    private static boolean tryBecomeWood(World world, int x, int y, int z, EnumFace face, EntityPlayer player, ItemStack item_stack)
+    {
+        if (!player.canPlayerEdit(x, y, z, item_stack))
+        {
             return false;
         }
         Block block = world.getBlock(x, y, z);
         int meta = block.getBlockSubtype(world.getBlockMetadata(x, y, z));
         int direction = world.getBlockMetadata(x, y, z);
 
-        if (block != Block.wood) {
+        if (block != Block.wood)
+        {
+            int strippedBlockID = -1;
+            if (block == Blocks.acacia.Log) strippedBlockID = Blocks.acacia.StrippedLog.blockID;
+            if (block == Blocks.darkOak.Log) strippedBlockID = Blocks.darkOak.StrippedLog.blockID;
+            if (block == Blocks.cherry.Log) strippedBlockID = Blocks.cherry.StrippedLog.blockID;
+
+            if (strippedBlockID != -1)
+            {
+                if (player.onClient())
+                {
+                    player.swingArm();
+                    Minecraft.theMinecraft.playerController.setUseButtonDelayOverride(200);
+                }
+                else
+                {
+                    world.setBlock(x, y, z, strippedBlockID, direction, 2);
+                    world.playSoundAtBlock(x, y, z, Block.wood.stepSound.getStepSound(), (Block.wood.stepSound.getVolume() + 1.0f) / 2.0f, Block.wood.stepSound.getPitch() * 0.8f);
+                    player.tryDamageHeldItem(DamageSource.generic, 10);
+                    player.addHungerServerSide(world.getBlockHardness(x, y, z) / 2.0f * EnchantmentHelper.getEnduranceModifier(player));
+                    dropWoodChips(world, x, y, z);
+                }
+                return true;
+            }
+
             return false;
         }
-        if (player.onClient()) {
+
+        if (player.onClient())
+        {
             player.swingArm();
             Minecraft.theMinecraft.playerController.setUseButtonDelayOverride(200);
-        } else {
+        }
+        else
+        {
             if (meta == 0)
                 world.setBlock(x, y, z, Blocks.oakLog.blockID, direction, 2);
+
             if (meta == 1)
                 world.setBlock(x, y, z, Blocks.spruceLog.blockID, direction, 2);
+
             if (meta == 2)
                 world.setBlock(x, y, z, Blocks.birchLog.blockID, direction, 2);
+
             if (meta == 3)
                 world.setBlock(x, y, z, Blocks.jungleLog.blockID, direction, 2);
+
             world.setBlockMetadataWithNotify(x, y, z, 1, 2);
 
             world.playSoundAtBlock(x, y, z, Block.wood.stepSound.getStepSound(), (Block.wood.stepSound.getVolume() + 1.0f) / 2.0f, Block.wood.stepSound.getPitch() * 0.8f);
@@ -52,15 +85,18 @@ public abstract class ItemAxeMixin extends ItemTool {
             dropWoodChips(world, x, y, z);
 
         }
+
         return true;
     }
 
     @Unique
-    private static void dropWoodChips(World world, int x, int y, int z) {
+    private static void dropWoodChips(World world, int x, int y, int z)
+    {
         Random rand = new Random();
 
         // 设置一个不掉落木屑的概率，比如有30%的概率不掉落
-        if (rand.nextInt(100) < 30) {
+        if (rand.nextInt(100) < 30)
+        {
             return;  // 30%的概率不掉落木屑
         }
         // 基础掉落数量，先掉落1-2个木屑
@@ -79,7 +115,8 @@ public abstract class ItemAxeMixin extends ItemTool {
         // 确保木屑数量不会超过一个合理的范围，例如最多5个
         chipCount = Math.min(chipCount, 5);
 
-        for (int i = 0; i < chipCount; i++) {
+        for (int i = 0; i < chipCount; i++)
+        {
             // 随机生成木屑掉落的坐标
             double offsetX = rand.nextFloat() * 0.7F + 0.15F;
             double offsetY = rand.nextFloat() * 0.7F + 0.15F;
@@ -102,26 +139,36 @@ public abstract class ItemAxeMixin extends ItemTool {
 
 
     @Override
-    public boolean onItemRightClick(EntityPlayer player, float partial_tick, boolean ctrl_is_down) {
-        RaycastCollision rc = player.getSelectedObject(partial_tick, true);
-        if (rc == null || !rc.isBlock()) {
-            if (this.canBlock()) {
+    public boolean onItemRightClick(EntityPlayer player, float partial_tick, boolean ctrl_is_down)
+    {
+        RaycastCollision raycastCollision = player.getSelectedObject(partial_tick, true);
+        if (raycastCollision == null || !raycastCollision.isBlock())
+        {
+            if (this.canBlock())
+            {
                 player.setHeldItemInUse();
                 return true;
-            } else {
+            }
+            else
+            {
                 return false;
             }
         }
 
-        boolean flag = tryBecomeWood(rc.world, rc.block_hit_x, rc.block_hit_y, rc.block_hit_z, rc.face_hit, player, player.getHeldItemStack());
-        if (!flag) {
-            if (this.canBlock()) {
+        boolean flag = tryBecomeWood(raycastCollision.world, raycastCollision.block_hit_x, raycastCollision.block_hit_y, raycastCollision.block_hit_z, raycastCollision.face_hit, player, player.getHeldItemStack());
+        if (!flag)
+        {
+            if (this.canBlock())
+            {
                 player.setHeldItemInUse();
                 return true;
-            } else {
+            }
+            else
+            {
                 return false;
             }
         }
+
         return flag;
     }
 }

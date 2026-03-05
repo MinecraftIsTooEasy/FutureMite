@@ -52,24 +52,29 @@ tile.prismarine_block.dark.name=暗海晶石
 item.prismarineShard.name=海晶碎片
 item.prismarineCrystals.name=海晶沙粒
 
+tile.log.acacia_log.name=金合欢原木
+tile.log.stripped_acacia_log.name=去皮金合欢原木
+tile.log.stripped_acacia_wood.name=去皮金合欢木
 tile.acacia_sapling.name=金合欢树苗
 tile.planks.acacia.name=金合欢木板
 tile.acacia.slab.name=金合欢木台阶
 tile.stairs.acacia.name=金合欢木楼梯
+
+tile.log.dark_oak_log.name=深色橡木原木
+tile.log.stripped_dark_oak_log.name=去皮深色橡木原木
+tile.log.stripped_dark_oak_wood.name=去皮深色橡木
+tile.dark_oak_sapling.name=深色橡木树苗
 tile.planks.dark_oak.name=深色橡木板
 tile.dark_oak.slab.name=深色橡木台阶
 tile.stairs.dark_oak.name=深色橡木楼梯
 
+tile.log.cherry_log.name=樱花原木
+tile.log.stripped_cherry_log.name=去皮樱花原木
+tile.log.stripped_cherry_wood.name=去皮樱花木
 tile.cherry_sapling.name=樱花树苗
 tile.planks.cherry.name=樱花木板
 tile.cherry.slab.name=樱花木台阶
 tile.stairs.cherry.name=樱花木楼梯
-tile.log.cherry_log.name=樱花原木
-tile.log.cherry_wood.name=樱花木
-tile.log.stripped_cherry_log.name=去皮樱花原木
-tile.log.stripped_cherry_wood.name=去皮樱花
-tile.trapdoors.cherry.name=樱花活扳门
-item.doors.cherry.name=樱花木门
 
 tile.iron_chain.name=铁锁链
 tile.copper_chain.name=铜锁链
@@ -87,7 +92,7 @@ tile.mithril_lantern.name=秘银灯笼
 tile.adamantium_lantern.name=艾德曼灯笼
 tile.sea_lantern.name=海晶灯
 
-tile.log.oak_log.name=去皮橡树原木
+tile.log.oak_log.name=去皮橡木原木
 tile.log.stripped_oak_wood.name=去皮橡木
 tile.log.birch_log.name=去皮白桦原木
 tile.log.stripped_birch_wood.name=去皮白桦木
@@ -95,11 +100,6 @@ tile.log.jungle_log.name=去皮丛林原木
 tile.log.stripped_jungle_wood.name=去皮从林木
 tile.log.spruce_log.name=去皮云杉原木
 tile.log.stripped_spruce_wood.name=去皮云杉木
-tile.log.acacia_wood.name=金合欢木
-tile.log.acacia_log.name=去皮金合欢原木
-tile.log.stripped_acacia_wood.name=去皮金合欢木
-tile.log.dark_oak_wood.name=深色橡木原木
-tile.log.stripped_dark_oak_wood.name=去皮深色橡木
 
 item.oak_boat.name=橡木船
 item.oak_chest_boat.name=橡木运输船
@@ -188,14 +188,16 @@ item.doors.spruce.name=云杉木门
 tile.doors.spruce.name=云杉木门
 item.doors.acacia.name=金合欢木门
 tile.doors.acacia.name=金合欢木门
+item.doors.cherry.name=樱花木门
 item.doors.dark_oak.name=深色橡木门
 tile.doors.dark_oak.name=深色橡木门
 
 tile.trapdoors.oak.name=橡木活板门
-tile.trapdoors.birch.name=桦木活板门
+tile.trapdoors.birch.name=白桦木活板门
 tile.trapdoors.jungle.name=从林木活板门
 tile.trapdoors.spruce.name=云杉木活板门
 tile.trapdoors.acacia.name=金合欢木活板门
+tile.trapdoors.cherry.name=樱花木活扳门
 tile.trapdoors.dark_oak.name=深色橡木活板门
 
 leaves.acacia.name=金合欢树叶
@@ -203,7 +205,6 @@ leaves.dark_oak.name=深色橡木树叶
 leaves.cherry.name=樱花树叶
 
 item.woodChips.name=木屑
-tile.dark_oak_sapling.name=深色橡木树苗
 tile.extinguished_Campfire.name=熄灭的营火
 
 campfire.burntime=燃烧时间

@@ -70,22 +70,21 @@ public class FutureMITEEMIPlugin implements EmiPlugin {
         // Mod logs -> Stripped mod logs
         addStrippingRecipe(registry, axes,
                 new ItemStack(Blocks.acacia.Log, 1, 0),
-                new ItemStack(Blocks.acacia.Log, 1, 2),
+                new ItemStack(Blocks.acacia.StrippedLog, 1, 0),
                 "acacia_log");
 
         addStrippingRecipe(registry, axes,
                 new ItemStack(Blocks.darkOak.Log, 1, 0),
-                new ItemStack(Blocks.darkOak.Log, 1, 2),
+                new ItemStack(Blocks.darkOak.StrippedLog, 1, 0),
                 "dark_oak_log");
 
         addStrippingRecipe(registry, axes,
                 new ItemStack(Blocks.cherry.Log, 1, 0),
-                new ItemStack(Blocks.cherry.Log, 1, 2),
+                new ItemStack(Blocks.cherry.StrippedLog, 1, 0),
                 "cherry_log");
     }
 
-    private void addStrippingRecipe(EmiRegistry registry, EmiIngredient axe,
-                                     ItemStack input, ItemStack output, String id) {
+    private void addStrippingRecipe(EmiRegistry registry, EmiIngredient axe, ItemStack input, ItemStack output, String id) {
         registry.addRecipe(EmiWorldInteractionRecipe.builder()
                 .id(new ResourceLocation(FutureMITEStart.MOD_ID, "world/stripping/" + id))
                 .leftInput(EmiStack.of(input))
