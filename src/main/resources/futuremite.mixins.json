@@ -32,6 +32,7 @@
     "render.RenderBlocksMixin",
     "render.RenderGlobalMixin",
     "render.RenderItemFrameMixin",
+    "world.ChunkProviderHellMixin",
     "world.ChunkProviderServerMixin",
     "world.MapGenVillageMixin",
     "world.biome.BiomeDecoratorMixin",

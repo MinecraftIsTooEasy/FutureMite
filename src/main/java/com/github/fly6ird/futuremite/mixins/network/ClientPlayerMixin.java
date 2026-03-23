@@ -4,6 +4,8 @@ package com.github.fly6ird.futuremite.mixins.network;
 import com.github.fly6ird.futuremite.api.IFutureMITEPlayer;
 import com.github.fly6ird.futuremite.gui.grindstone.GrindStoneSlots;
 import com.github.fly6ird.futuremite.gui.grindstone.GuiGrindStone;
+import com.github.fly6ird.futuremite.gui.smithing.GuiSmithingTable;
+import com.github.fly6ird.futuremite.tileentities.TileEntitySmithingTable;
 import net.minecraft.AbstractClientPlayer;
 import net.minecraft.ClientPlayer;
 import net.minecraft.Minecraft;
@@ -25,5 +27,9 @@ public abstract class ClientPlayerMixin extends AbstractClientPlayer implements 
         this.mc.displayGuiScreen(new GuiGrindStone(this, x, y, z, slots));
     }
 
+    @Override
+    public void futureMITE$displayGUISmithing(TileEntitySmithingTable tileEntity) {
+        this.mc.displayGuiScreen(new GuiSmithingTable(this, tileEntity));
+    }
 
 }

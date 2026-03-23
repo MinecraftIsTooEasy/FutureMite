@@ -1,8 +1,10 @@
 package com.github.fly6ird.futuremite.events.listener;
 
+import com.github.fly6ird.futuremite.items.NetheriteItems;
 import moddedmite.rustedironcore.api.event.listener.ILootTableRegisterListener;
 import net.minecraft.Block;
 import net.minecraft.Item;
+import net.minecraft.ItemStack;
 import net.minecraft.WeightedRandomChestContent;
 
 import java.util.List;
@@ -67,6 +69,11 @@ public class LootTableRegistry implements ILootTableRegisterListener {
         original.add(new WeightedRandomChestContent(Item.battleAxeCopper.itemID, 0, 1, 1, 5));
         original.add(new WeightedRandomChestContent(Item.battleAxeIron.itemID, 0, 1, 1, 5));
         original.add(new WeightedRandomChestContent(Block.sponge.blockID, 1, 1, 2, 10));
+    }
+
+    @Override
+    public void onFortressRegister(List<WeightedRandomChestContent> original) {
+        original.add(new WeightedRandomChestContent(new ItemStack(NetheriteItems.netheriteUpgradeTemplate, 1), 1, 1, 3));
     }
 
 }

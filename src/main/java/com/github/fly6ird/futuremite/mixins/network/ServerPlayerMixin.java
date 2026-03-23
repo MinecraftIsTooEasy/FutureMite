@@ -4,7 +4,9 @@ package com.github.fly6ird.futuremite.mixins.network;
 import com.github.fly6ird.futuremite.api.IFutureMITEPlayer;
 import com.github.fly6ird.futuremite.gui.grindstone.ContainerGrindStone;
 import com.github.fly6ird.futuremite.gui.grindstone.GrindStoneSlots;
+import com.github.fly6ird.futuremite.gui.smithing.ContainerSmithingTable;
 import com.github.fly6ird.futuremite.network.packets.S2COpenWindow;
+import com.github.fly6ird.futuremite.tileentities.TileEntitySmithingTable;
 import moddedmite.rustedironcore.network.Network;
 import net.minecraft.*;
 import org.spongepowered.asm.mixin.Mixin;
@@ -34,6 +36,23 @@ public abstract class ServerPlayerMixin extends EntityPlayer implements ICraftin
         this.openContainer = (Container) new ContainerGrindStone(slots, this, x, y, z);
         this.openContainer.windowId = this.currentWindowId;
         sendContainerAndContentsToPlayer(this.openContainer, ((ContainerGrindStone) this.openContainer).getInventory());
+        this.openContainer.addCraftingToCrafters(this);
+    }
+
+    @Override
+    public void futureMITE$displayGUISmithing(TileEntitySmithingTable tileEntity) {
+        incrementWindowID();
+        Network.sendToClient(this.getAsEntityPlayerMP(), (new S2COpenWindow(
+                this.currentWindowId,
+                S2COpenWindow.EnumInventoryType.SmithingTable,
+                tileEntity.getCustomNameOrUnlocalized(),
+                tileEntity.getSizeInventory(),
+                tileEntity.hasCustomName()
+        )).setCoords(tileEntity.xCoord, tileEntity.yCoord, tileEntity.zCoord));
+
+        this.openContainer = new ContainerSmithingTable(this, tileEntity);
+        this.openContainer.windowId = this.currentWindowId;
+        sendContainerAndContentsToPlayer(this.openContainer, ((ContainerSmithingTable) this.openContainer).getInventory());
         this.openContainer.addCraftingToCrafters(this);
     }
 }

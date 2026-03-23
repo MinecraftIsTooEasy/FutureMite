@@ -3,6 +3,7 @@ package com.github.fly6ird.futuremite.network.packets;
 import com.github.fly6ird.futuremite.api.IFutureMITEPlayer;
 import com.github.fly6ird.futuremite.gui.grindstone.GrindStoneSlots;
 import com.github.fly6ird.futuremite.network.FutureMITENetWork;
+import com.github.fly6ird.futuremite.tileentities.TileEntitySmithingTable;
 import moddedmite.rustedironcore.network.Packet;
 import moddedmite.rustedironcore.network.PacketByteBuf;
 import net.minecraft.*;
@@ -85,6 +86,14 @@ public class S2COpenWindow implements Packet {
                 ((IFutureMITEPlayer) player).futureMITE$displayGUIGrindstone(this.x, this.y, this.z, new GrindStoneSlots(new InventoryBasic(this.windowTitle, this.useProvidedWindowTitle, this.slotsCount)));
                 player.openContainer.windowId = this.windowId;
             }
+            case SmithingTable -> {
+                if (tile_entity instanceof TileEntitySmithingTable smithingTableTileEntity) {
+                    ((IFutureMITEPlayer) player).futureMITE$displayGUISmithing(smithingTableTileEntity);
+                    player.openContainer.windowId = this.windowId;
+                } else {
+                    Minecraft.setErrorMessage("handleOpenWindow: smithing table tile entity missing at " + StringHelper.getCoordsAsString(this.x, this.y, this.z));
+                }
+            }
             default -> Minecraft.setErrorMessage("handleOpenWindow: type not handled " + this.enumInventoryType);
         }
     }
@@ -96,6 +105,7 @@ public class S2COpenWindow implements Packet {
 
     public enum EnumInventoryType {
         GrindStone(0, true),
+        SmithingTable(1, true),
         ;
 
         public final int id;

@@ -54,6 +54,7 @@ public class Items extends Item {
     }
 
     public static void registerItems(ItemRegistryEvent event) {
+        NetheriteItems.registerItems(event);
         event.register(FutureMITEStart.NameSpaceCompact, "futuremite:rabbit_raw", "rabbitRaw", rabbitRaw);
         event.register(FutureMITEStart.NameSpaceCompact, "futuremite:rabbit_cooked", "rabbitCooked", rabbitCooked);
         event.register(FutureMITEStart.NameSpaceCompact, "futuremite:rabbit_hide", "rabbitHide", rabbitHide);
@@ -92,6 +93,7 @@ public class Items extends Item {
     }
 
     public static void registerRecipes(RecipeRegistryEvent register) {
+        NetheriteItems.registerRecipes(register);
         RecipesFurnaceExtend.registerFurnaceRecipes();
         register.registerShapedRecipe(new ItemStack(armorStand, 1), true, new Object[]{"AAA", " A ", "ABA", Character.valueOf('A'), new ItemStack(Item.stick, 1), Character.valueOf('B'), new ItemStack(Block.stoneSingleSlab, 1)});
 

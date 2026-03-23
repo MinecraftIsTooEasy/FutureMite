@@ -6,6 +6,7 @@ import moddedmite.rustedironcore.api.event.Handlers;
 public class FutureMITEEventRIC extends Handlers {
     public static void register() {
         EntityTracker.register(new EntityTrackerRegistry());
+        ArmorModel.register(new ArmorModelListener());
         LootTable.register(new LootTableRegistry());
         Barbecue.register(new BarbecueListener());
         TileEntityData.register(new TileEntityDataTypeRegistry());

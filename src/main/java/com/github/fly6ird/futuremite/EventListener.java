@@ -9,6 +9,7 @@ import com.github.fly6ird.futuremite.render.entity.*;
 import com.github.fly6ird.futuremite.tileentities.TileEntityBarrel;
 import com.github.fly6ird.futuremite.tileentities.TileEntityCampfire;
 import com.github.fly6ird.futuremite.tileentities.TileEntityGrindstone;
+import com.github.fly6ird.futuremite.tileentities.TileEntitySmithingTable;
 import com.google.common.eventbus.Subscribe;
 import net.minecraft.ResourceLocation;
 import net.xiaoyu233.fml.reload.event.*;
@@ -136,6 +137,7 @@ public class EventListener {
         event.register(TileEntityBarrel.class, "Barrel");
         event.register(TileEntityGrindstone.class, "Grindstone");
         event.register(TileEntityCampfire.class, "Campfire");
+        event.register(TileEntitySmithingTable.class, "futuremite:smithing_table");
     }
 
     public static int getNextEntityID() {

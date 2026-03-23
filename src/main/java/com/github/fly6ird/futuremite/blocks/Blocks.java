@@ -4,6 +4,8 @@ import com.github.fly6ird.futuremite.FutureMITEStart;
 import com.github.fly6ird.futuremite.creativetab.FutureMITECreativeTabs;
 import com.github.fly6ird.futuremite.items.ItemBigGrass;
 import com.github.fly6ird.futuremite.items.Items;
+import com.github.fly6ird.futuremite.items.NetheriteItems;
+import com.github.fly6ird.futuremite.material.Materials;
 import com.github.fly6ird.futuremite.sound.*;
 import com.github.fly6ird.futuremite.world.gen.WorldGenBigCherryTree;
 import com.github.fly6ird.futuremite.world.gen.WorldGenCherryTrees;
@@ -41,6 +43,9 @@ public class Blocks extends Block {
     public static final Block dirtPath = new BlockDirtPath(getNextBlockID());
 
     public static final Block soulTorch = new BlockSoulTorch(getNextBlockID());
+    public static final Block ancientDebris = new BlockAncientDebris(getNextBlockID()).setCreativeTab(FutureMITECreativeTabs.tabBlock);
+    public static final Block netheriteBlock = new BlockOreBlockExtend(getNextBlockID(), Materials.netherite).setHardness(3.0F).setStepSound(Block.soundStoneFootstep).setCreativeTab(FutureMITECreativeTabs.tabBlock);
+    public static final Block smithingTable = new BlockSmithingTable(getNextBlockID()).setCreativeTab(FutureMITECreativeTabs.tabBlock);
 
     public static final Block copperLantern = new BlockLantern(getNextBlockID(),Material.copper);
     public static final Block silverLantern = new BlockLantern(getNextBlockID(),Material.silver);
@@ -127,6 +132,9 @@ public class Blocks extends Block {
         new ItemMultiTextureTile(prismarineBlock, prismarineBlock.getNames());
         registryEvent.registerItemBlock(FutureMITEStart.NameSpaceCompact, "futuremite:sea_lantern", seaLantern);
         registryEvent.registerItemBlock(FutureMITEStart.NameSpaceCompact, grindStone);
+        registryEvent.registerItemBlock(FutureMITEStart.NameSpaceCompact, "netherite_ore", ancientDebris);
+        registryEvent.registerItemBlock(FutureMITEStart.NameSpaceCompact, "futuremite:netherite_block", netheriteBlock);
+        registryEvent.registerItemBlock(FutureMITEStart.NameSpaceCompact, "smithing_table", smithingTable);
 
         String[] chainNames = {"copper_chain", "silver_chain", "golden_chain", "iron_chain", "ancient_chain", "mithril_chain", "adamantium_chain"};
         Block[] chains = {copperChain, silverChain, goldenChain, ironChain, ancientChain, mithrilChain, adamantiumChain};
@@ -156,6 +164,9 @@ public class Blocks extends Block {
         BrickWall.setUnlocalizedName("brickWall");
         endStoneBrickWall.setUnlocalizedName("endStoneBrickWall");
         seaLantern.setUnlocalizedName("sea_lantern");
+        ancientDebris.setUnlocalizedName("netherite_ore");
+        netheriteBlock.setUnlocalizedName("netherite_block");
+        smithingTable.setUnlocalizedName("smithing_table");
 
         registryEvent.registerItemBlock(FutureMITEStart.NameSpaceCompact, sweetBerryBush);
         registryEvent.registerItemBlock(FutureMITEStart.NameSpaceCompact, dirtPath);
@@ -193,6 +204,9 @@ public class Blocks extends Block {
 
     public static void registerRecipes(RecipeRegistryEvent register) {
         register.registerShapedRecipe(new ItemStack(seaLantern, 1), true, "ABA", "BBB", "ABA", 'A', Item.getItem(Items.prismarineShard.itemID), 'B', Item.getItem(Items.prismarineCrystals.itemID));
+        register.registerShapedRecipe(new ItemStack(smithingTable, 1), true, "II", "PP", "PP", 'I', Item.ingotIron, 'P', Block.planks);
+        register.registerShapedRecipe(new ItemStack(netheriteBlock, 1), true, "III", "III", "III", 'I', NetheriteItems.netheriteIngot);
+        register.registerShapelessRecipe(new ItemStack(NetheriteItems.netheriteIngot, 9), true, netheriteBlock);
 
         for (int woodIndex = 0; woodIndex < 4; woodIndex++) {
             register.registerShapedRecipe(new ItemStack(barrel, 1), true, "ABA", "A A", "ABA", 'A', new ItemStack((Block.planks), 1, woodIndex), 'B', new ItemStack((Block.woodSingleSlab), 1, woodIndex));
@@ -304,6 +318,7 @@ public class Blocks extends Block {
 
     public static void furnaceRecipe() {
         FurnaceRecipes.smelting().addSmelting(sponge.blockID, new ItemStack(Item.itemsList[sponge.blockID], 1, 0));
+        FurnaceRecipes.smelting().addSmelting(ancientDebris.blockID, new ItemStack(NetheriteItems.netheriteScrap, 1));
     }
 
     public static int getNextBlockID() {

@@ -36,8 +36,11 @@ public class PrismarineBlocks extends Block implements IBlockWithSubtypes {
 
     @Override
     public Icon getIcon(int side, int metadata) {
-        //int index=metadata&2;
-        return prismarine[metadata];
+        int subtype = this.getBlockSubtypeUnchecked(metadata);
+        if (subtype < 0 || subtype >= this.prismarine.length) {
+            subtype = 0;
+        }
+        return this.prismarine[subtype];
     }
 
     public void registerIcons(IconRegister par1IconRegister) {
