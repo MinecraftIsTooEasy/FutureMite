@@ -16,6 +16,43 @@ import static com.github.fly6ird.futuremite.blocks.Blocks.getNextBlockID;
 import static net.xiaoyu233.fml.reload.utils.IdUtil.getNextItemID;
 
 public class TreeHelper {
+    private static class WoodProfile {
+        final float logHardness;
+        final float logResistance;
+        final float plankHardness;
+        final float plankResistance;
+        final float doorHardness;
+        final float doorResistance;
+        final float trapDoorHardness;
+        final float trapDoorResistance;
+        final float leavesHardness;
+        final float saplingHardness;
+
+        private WoodProfile(
+            float logHardness,
+            float logResistance,
+            float plankHardness,
+            float plankResistance,
+            float doorHardness,
+            float doorResistance,
+            float trapDoorHardness,
+            float trapDoorResistance,
+            float leavesHardness,
+            float saplingHardness
+        ) {
+            this.logHardness = logHardness;
+            this.logResistance = logResistance;
+            this.plankHardness = plankHardness;
+            this.plankResistance = plankResistance;
+            this.doorHardness = doorHardness;
+            this.doorResistance = doorResistance;
+            this.trapDoorHardness = trapDoorHardness;
+            this.trapDoorResistance = trapDoorResistance;
+            this.leavesHardness = leavesHardness;
+            this.saplingHardness = saplingHardness;
+        }
+    }
+
 
     public final String id;
     public final BlockModLog Log;
@@ -54,6 +91,59 @@ public class TreeHelper {
         this.ObsidianWorkbench         = (WorkbenchBlock) new FMWorkBenchBlock(getNextBlockID(), Material.obsidian, 0.2F, Material.obsidian, id,                true ).setCreativeTab(FutureMITECreativeTabs.tabBlock);
         this.FlintStrippedWorkbench    = (WorkbenchBlock) new FMWorkBenchBlock(getNextBlockID(), Material.flint,    0.2F, Material.flint,    "stripped_" + id,  false).setCreativeTab(FutureMITECreativeTabs.tabBlock);
         this.ObsidianStrippedWorkbench = (WorkbenchBlock) new FMWorkBenchBlock(getNextBlockID(), Material.obsidian, 0.2F, Material.obsidian, "stripped_" + id,  true ).setCreativeTab(FutureMITECreativeTabs.tabBlock);
+
+        // Mirror 1.21.1-style grouping by creative page.
+        this.Log.setCreativeTab(FutureMITECreativeTabs.tabBuildingBlocks);
+        this.StrippedLog.setCreativeTab(FutureMITECreativeTabs.tabBuildingBlocks);
+        this.StrippedWood.setCreativeTab(FutureMITECreativeTabs.tabBuildingBlocks);
+        this.Planks.setCreativeTab(FutureMITECreativeTabs.tabBuildingBlocks);
+        this.Stairs.setCreativeTab(FutureMITECreativeTabs.tabBuildingBlocks);
+        this.SingleSlab.setCreativeTab(FutureMITECreativeTabs.tabBuildingBlocks);
+        this.DoubleSlab.setCreativeTab(FutureMITECreativeTabs.tabBuildingBlocks);
+        this.Fence.setCreativeTab(FutureMITECreativeTabs.tabBuildingBlocks);
+
+        this.Leaves.setCreativeTab(FutureMITECreativeTabs.tabNaturalBlocks);
+        this.Sapling.setCreativeTab(FutureMITECreativeTabs.tabNaturalBlocks);
+
+        this.Door.setCreativeTab(FutureMITECreativeTabs.tabRedstoneBlocks);
+        this.TrapDoor.setCreativeTab(FutureMITECreativeTabs.tabRedstoneBlocks);
+        this.FenceGate.setCreativeTab(FutureMITECreativeTabs.tabRedstoneBlocks);
+        this.ItemDoor.setCreativeTab(FutureMITECreativeTabs.tabRedstoneBlocks);
+
+        this.FlintWorkbench.setCreativeTab(FutureMITECreativeTabs.tabFunctionalBlocks);
+        this.ObsidianWorkbench.setCreativeTab(FutureMITECreativeTabs.tabFunctionalBlocks);
+        this.FlintStrippedWorkbench.setCreativeTab(FutureMITECreativeTabs.tabFunctionalBlocks);
+        this.ObsidianStrippedWorkbench.setCreativeTab(FutureMITECreativeTabs.tabFunctionalBlocks);
+
+        applyWoodProfile(getProfile(id));
+    }
+
+    private WoodProfile getProfile(String id) {
+        // 1.21.1 baseline for wood family: logs/stems and planks are 2.0, leaves 0.2, sapling/propagule 0.0.
+        // Explosion resistance in this codebase is expressed separately, keep a consistent 3.0 for plank family.
+        if ("mangrove".equals(id) || "bamboo".equals(id) || "cherry".equals(id)) {
+            return new WoodProfile(2.0F, 3.0F, 2.0F, 3.0F, 3.0F, 3.0F, 3.0F, 3.0F, 0.2F, 0.0F);
+        }
+        return new WoodProfile(2.0F, 3.0F, 2.0F, 3.0F, 3.0F, 3.0F, 3.0F, 3.0F, 0.2F, 0.0F);
+    }
+
+    private void applyWoodProfile(WoodProfile profile) {
+        this.Log.setHardness(profile.logHardness).setResistance(profile.logResistance).setStepSound(Blocks.stepSoundWood);
+        this.StrippedLog.setHardness(profile.logHardness).setResistance(profile.logResistance).setStepSound(Blocks.stepSoundWood);
+        this.StrippedWood.setHardness(profile.logHardness).setResistance(profile.logResistance).setStepSound(Blocks.stepSoundWood);
+
+        this.Planks.setHardness(profile.plankHardness).setResistance(profile.plankResistance).setStepSound(Blocks.stepSoundWood);
+        this.Stairs.setHardness(profile.plankHardness).setResistance(profile.plankResistance).setStepSound(Blocks.stepSoundWood);
+        this.SingleSlab.setHardness(profile.plankHardness).setResistance(profile.plankResistance).setStepSound(Blocks.stepSoundWood);
+        this.DoubleSlab.setHardness(profile.plankHardness).setResistance(profile.plankResistance).setStepSound(Blocks.stepSoundWood);
+        this.Fence.setHardness(profile.plankHardness).setResistance(profile.plankResistance).setStepSound(Blocks.stepSoundWood);
+        this.FenceGate.setHardness(profile.plankHardness).setResistance(profile.plankResistance).setStepSound(Blocks.stepSoundWood);
+
+        this.Door.setHardness(profile.doorHardness).setResistance(profile.doorResistance).setStepSound(Blocks.stepSoundWood);
+        this.TrapDoor.setHardness(profile.trapDoorHardness).setResistance(profile.trapDoorResistance).setStepSound(Blocks.stepSoundWood);
+
+        this.Leaves.setHardness(profile.leavesHardness).setStepSound(Block.soundGrassFootstep);
+        this.Sapling.setHardness(profile.saplingHardness).setStepSound(Block.soundGrassFootstep);
     }
 
     public void registerRecipes(RecipeRegistryEvent register) {

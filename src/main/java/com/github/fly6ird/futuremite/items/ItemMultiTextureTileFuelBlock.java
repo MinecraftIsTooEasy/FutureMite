@@ -1,4 +1,4 @@
-//package com.github.fly6ird.futuremite.items;
+package com.github.fly6ird.futuremite.items;//package com.github.fly6ird.futuremite.items;
 //
 //import net.minecraft.Block;
 //import net.minecraft.ItemMultiTextureTile;

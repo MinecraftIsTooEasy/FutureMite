@@ -23,6 +23,14 @@ public class BlockModTrapDoor extends BlockTrapDoor {
         this.setCreativeTab(FutureMITECreativeTabs.tabBlock);
     }
 
+    public BlockModTrapDoor(int id, Material material, String textureName, String unlocalizedName) {
+        super(id, material);
+        this.Planks = null;
+        this.setTextureName(textureName);
+        this.setUnlocalizedName(unlocalizedName);
+        this.setCreativeTab(FutureMITECreativeTabs.tabBuildingBlocks);
+    }
+
     public void registerRecipeWithVanilla(RecipeRegistryEvent register, int i) {
         register.registerShapedRecipe(new ItemStack(this, 2), true, new Object[]{"###", "###", '#', new ItemStack(planks, 1, i)});
     }

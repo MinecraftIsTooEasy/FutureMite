@@ -1,4 +1,4 @@
-/*
+package com.github.fly6ird.futuremite.world.structure;/*
 package com.github.fly6ird.futuremite.world.structure;
 
 

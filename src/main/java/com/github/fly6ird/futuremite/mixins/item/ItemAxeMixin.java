@@ -141,6 +141,14 @@ public abstract class ItemAxeMixin extends ItemTool {
     @Override
     public boolean onItemRightClick(EntityPlayer player, float partial_tick, boolean ctrl_is_down)
     {
+        // OhMyCommands 在 ItemTool#onItemRightClick HEAD 里处理创造模式燧石斧选点
+        // 仅该场景先交给基类，避免吞掉普通剥皮逻辑
+        if (player.onClient() && player.isPlayerInCreative() && this.itemID == Item.axeFlint.itemID
+                && super.onItemRightClick(player, partial_tick, ctrl_is_down))
+        {
+            return true;
+        }
+
         RaycastCollision raycastCollision = player.getSelectedObject(partial_tick, true);
         if (raycastCollision == null || !raycastCollision.isBlock())
         {
@@ -153,6 +161,16 @@ public abstract class ItemAxeMixin extends ItemTool {
             {
                 return false;
             }
+        }
+
+        if (player.inCreativeMode())
+        {
+            if (this.canBlock())
+            {
+                player.setHeldItemInUse();
+                return true;
+            }
+            return false;
         }
 
         boolean flag = tryBecomeWood(raycastCollision.world, raycastCollision.block_hit_x, raycastCollision.block_hit_y, raycastCollision.block_hit_z, raycastCollision.face_hit, player, player.getHeldItemStack());

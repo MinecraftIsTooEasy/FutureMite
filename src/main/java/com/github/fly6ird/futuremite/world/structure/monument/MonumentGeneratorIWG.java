@@ -1,4 +1,4 @@
-/*
+package com.github.fly6ird.futuremite.world.structure.monument;/*
 package com.github.fly6ird.futuremite.world.structure.monument;
 
 i

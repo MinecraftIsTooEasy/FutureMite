@@ -45,7 +45,7 @@ public class ItemNewBoat extends Item {
         if (!this.isChest)
             register.registerShapedRecipe(new ItemStack(this, 1), true, new Object[]{"B B", "A A", "AAA", Character.valueOf('A'), this.boatinfo.getPlank(), Character.valueOf('B'), new ItemStack(Item.shovelWood, 1)});
         else {
-            ItemNewBoat.BoatInfo boatInfo = ItemNewBoat.BOAT_INFO.get(this.name);//获取没有箱子的对应Boatinfo  以便为了获取没有箱子的船
+            BoatInfo boatInfo = ItemNewBoat.BOAT_INFO.get(this.name);//获取没有箱子的对应Boatinfo  以便为了获取没有箱子的船
             register.registerShapedRecipe(new ItemStack(this, 1), true, new Object[]{"A", "B", Character.valueOf('A'), new ItemStack(Block.chest), Character.valueOf('B'), boatInfo.getBoatItem()});
             register.registerShapedRecipe(new ItemStack(this, 1), true, new Object[]{"B B", "ACA", "AAA", Character.valueOf('A'), this.boatinfo.getPlank(), Character.valueOf('B'), new ItemStack(Item.shovelWood, 1), Character.valueOf('C'), new ItemStack(Block.chest)});
         }
