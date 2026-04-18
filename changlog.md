@@ -9,6 +9,14 @@
 ---
 
 ## FutureMITE-Alpha1.1.0
+### 修复了以下BUG
+- 冲突模组：extreme（极难模组） 与 futuremite
+
+- 冲突位置：net.minecraft.ServerPlayer 类的 canCommandSenderUseCommand 方法
+
+- 冲突原因：两个模组都通过 Mixin 修改了同一个方法（futuremite 先合并了该方法，extreme 再尝试注入时找不到预期的代码结构）。
+
+## FutureMITE-Alpha1.1.0
 
 ### 新增内容
 - 移植了大量 **1.21.1** 的方块，仅移植方块，暂时没有影响世界的能力。
