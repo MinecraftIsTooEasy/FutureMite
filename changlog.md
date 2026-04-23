@@ -8,7 +8,10 @@
 
 ---
 
-## FutureMITE-Alpha1.1.0
+## FutureMITE-Alpha1.1.2
+### 修复了部分台阶无法堆叠的BUG
+
+## FutureMITE-Alpha1.1.1
 ### 修复了以下BUG
 - 冲突模组：extreme（极难模组） 与 futuremite
 
