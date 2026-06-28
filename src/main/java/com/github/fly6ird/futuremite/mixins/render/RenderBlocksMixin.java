@@ -1,6 +1,5 @@
 package com.github.fly6ird.futuremite.mixins.render;
 
-
 import com.github.fly6ird.futuremite.api.EnumItemRenderType;
 import com.github.fly6ird.futuremite.api.IRenderBlock;
 import com.github.fly6ird.futuremite.blocks.BlockCampfire;
@@ -11,11 +10,11 @@ import com.github.fly6ird.futuremite.tileentities.TileEntityGrindstone;
 import net.minecraft.*;
 import org.lwjgl.opengl.GL11;
 import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.Overwrite;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.ModifyVariable;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
@@ -32,10 +31,6 @@ public abstract class RenderBlocksMixin implements IRenderBlock {
         Icon par1Icon = par1Block.getIcon(side, metadata);
         return par1Icon != null ? par1Icon : ((TextureMap) Minecraft.theMinecraft.getTextureManager().getTexture(TextureMap.locationBlocksTexture)).getAtlasSprite("missingno");
     }
-
-    @Shadow
-    public abstract void drawCrossedSquares(Block par1Block, int par2, double par3, double par5, double par7, float par9);
-
 
     @Unique
     private EnumItemRenderType renderItemType;  //0为物品栏  1为手持  2为凋落物
@@ -89,45 +84,17 @@ public abstract class RenderBlocksMixin implements IRenderBlock {
         }
     }
 
-
-    /**
-     * @author
-     * @reason
-     */
-    @Overwrite
-    public boolean renderCrossedSquares(Block par1Block, int par2, int par3, int par4) {
-        Tessellator.instance.setBrightness(par1Block.getMixedBrightnessForBlock(this.blockAccess, par2, par3, par4));
-        float var6 = 1.0F;
-        int var7 = par1Block.colorMultiplier(this.blockAccess, par2, par3, par4);
-        float var8 = (float) (var7 >> 16 & 255) / 255.0F;
-        float var9 = (float) (var7 >> 8 & 255) / 255.0F;
-        float var10 = (float) (var7 & 255) / 255.0F;
-        if (EntityRenderer.anaglyphEnable) {
-            float var11 = (var8 * 30.0F + var9 * 59.0F + var10 * 11.0F) / 100.0F;
-            float var12 = (var8 * 30.0F + var9 * 70.0F) / 100.0F;
-            float var13 = (var8 * 30.0F + var10 * 70.0F) / 100.0F;
-            var8 = var11;
-            var9 = var12;
-            var10 = var13;
+    @ModifyVariable(
+            method = "renderCrossedSquares",
+            at = @At("HEAD"),
+            argsOnly = true,
+            ordinal = 0
+    )
+    private Block modifyBlockForBigGrass(Block par1Block) {
+        if (par1Block == Blocks.bigGrass || par1Block == Blocks.tallGrass) {
+            return Blocks.tallGrass;
         }
-
-        Tessellator.instance.setColorOpaque_F(var6 * var8, var6 * var9, var6 * var10);
-        double var19 = (double) par2;
-        double var20 = (double) par3;
-        double var15 = (double) par4;
-        if (par1Block == Blocks.tallGrass || par1Block == Blocks.bigGrass) {
-            long var17;
-            if (par1Block == Blocks.tallGrass)
-                var17 = (long) (par2 * 3129871L) ^ (long) par4 * 116129781L ^ (long) par3;
-            else var17 = (long) (par2 * 3129871L) ^ (long) par4 * 116129781L;
-            var17 = var17 * var17 * 42317861L + var17 * 11L;
-            var19 += ((double) ((float) (var17 >> 16 & 15L) / 15.0F) - 0.5) * 0.5;
-            var20 += ((double) ((float) (var17 >> 20 & 15L) / 15.0F) - 1.0) * 0.2;
-            var15 += ((double) ((float) (var17 >> 24 & 15L) / 15.0F) - 0.5) * 0.5;
-        }
-
-        this.drawCrossedSquares(par1Block, this.blockAccess.getBlockMetadata(par2, par3, par4), var19, var20, var15, 1.0F);
-        return true;
+        return par1Block;
     }
 
     @Override
